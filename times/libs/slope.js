@@ -1,6 +1,7 @@
 !function(){
 	var bP={};
-	var b=30, bb=150, height=600, buffMargin=1, minHeight=14;
+        // handle width, gap width,
+        var b=30, bb=150, height=600, buffMargin=1, minHeight=14;
 	var c1=[-130, 40], c2=[-50, 100], c3=[-10, 140]; //Column positions of labels.
 	//var colors =[ "#FF9900","#109618", "#990099", "#0099C6", "#DC3912"];
 	//var colors =[ '#edbd00','#367d85', '#97ba4c', '#00ffbf', '#f5662b',"#00bfff",'#4000ff', "#7f00ff"];
@@ -128,16 +129,16 @@
 			.attr("text-anchor","start" );
 
     // values to the right
-		mainbar.append("text").attr("class","barvalue")
+		/*mainbar.append("text").attr("class","barvalue")
 			.attr("x", c2[p]).attr("y",function(d){ return d.middle+5;})
 			.text(function(d,i){ return  d.value ;})
-			.attr("text-anchor","end");
+			.attr("text-anchor","end");*/
 
 		// percentages to the right
-		mainbar.append("text").attr("class","barpercent") // percentages
+		/*mainbar.append("text").attr("class","barpercent") // percentages
 			.attr("x", c3[p]).attr("y",function(d){ return d.middle+5;})
 			.text(function(d,i){ return " ("+ Math.round(100*d.percent)+"%)" ;})
-			.attr("text-anchor","end").style("fill","grey");
+			.attr("text-anchor","end").style("fill","grey");*/
 
 		d3.select("#"+id).select(".part"+p).select(".subbars")
 			.selectAll(".subbar").data(data.subBars[p]).enter()
@@ -164,11 +165,11 @@
 		[0,1].forEach(function(d){
 			var h = d3.select("#"+id).select(".part"+d).append("g").attr("class","header");
 
-			h.append("text").text(header[d]).attr("x", (c1[d]-5))
-				.attr("y", -5).style("fill","black");
+			/*h.append("text").text(header[d]).attr("x", (c1[d]-5))
+				.attr("y", -5).style("fill","black");*/
 
-			h.append("text").text("Count (%)").attr("x", (c2[d]-5))
-				.attr("y", -5).style("fill","grey");
+			/*h.append("text").text("Count (%)").attr("x", (c2[d]-5))
+				.attr("y", -5).style("fill","grey");*/
 
 			h.append("line").attr("x1",c1[d]-10).attr("y1", 2) //-30 is margin to the left
 				.attr("x2",c3[d]+ 16).attr("y2", 2).style("stroke",'#edbd00')
