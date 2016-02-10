@@ -117,7 +117,7 @@
 			.enter().append("g").attr("class","mainbar");
 
 		mainbar.append("rect").attr("class","mainrect")
-			.attr("x", 0).attr("y",function(d){ return d.middle-d.height/2; })
+			.attr("x", -90).attr("y",function(d){ return d.middle-d.height/2; })
 			.attr("width",b).attr("height",function(d){ return d.height; })
 			.style("shape-rendering","auto")
 			.style("fill-opacity",0).style("stroke-width","0.5")
@@ -143,7 +143,7 @@
 		d3.select("#"+id).select(".part"+p).select(".subbars")
 			.selectAll(".subbar").data(data.subBars[p]).enter()
 			.append("rect").attr("class","subbar")
-			.attr("x", 0).attr("y",function(d){ return d.y})
+			.attr("x", -80).attr("y",function(d){ return d.y})
 			.attr("width",b).attr("height",function(d){ return d.h})
 			.style("fill",function(d){ return colors[d.key1];});
 	}
