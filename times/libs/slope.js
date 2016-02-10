@@ -2,7 +2,7 @@
 	var bP={};
         // handle width, gap width,
         var b=30, bb=150, height=600, buffMargin=1, minHeight=14;
-	var c1=[-130, 40], c2=[-50, 100], c3=[-10, 140]; //Column positions of labels.
+	var c1=[-130, -30], c2=[-50, 100], c3=[-10, 140]; //Column positions of labels.
 	//var colors =[ "#FF9900","#109618", "#990099", "#0099C6", "#DC3912"];
 	//var colors =[ '#edbd00','#367d85', '#97ba4c', '#00ffbf', '#f5662b',"#00bfff",'#4000ff', "#7f00ff"];
 	var colors =['#ffe5e5', '#ffcccc','#ffb3b3','#ff6666','#ff3333','#e60000','#990000','#660000	'];
@@ -117,7 +117,7 @@
 			.enter().append("g").attr("class","mainbar");
 
 		mainbar.append("rect").attr("class","mainrect")
-			.attr("x", -90).attr("y",function(d){ return d.middle-d.height/2; })
+			.attr("x", -80).attr("y",function(d){ return d.middle-d.height/2; })
 			.attr("width",b).attr("height",function(d){ return d.height; })
 			.style("shape-rendering","auto")
 			.style("fill-opacity",0).style("stroke-width","0.5")
@@ -149,7 +149,9 @@
 	}
 
 	function drawEdges(data, id){
-		d3.select("#"+id).append("g").attr("class","edges").attr("transform","translate("+ b+",0)");
+	    d3.select("#"+id).append("g")
+                .attr("class","edges")
+                .attr("transform","translate("+ (b-80) +",0)");
 
 		d3.select("#"+id).select(".edges").selectAll(".edge")
 			.data(data.edges).enter().append("polygon").attr("class","edge")
