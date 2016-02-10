@@ -45,6 +45,7 @@
       and have no liability for ... you staying single.
     </div>
 
+    <script type="text/javascript" src="libs/pym.js"></script>
     <script src="libs/d3.v3.js"></script>
     <script src="libs/slope.js"></script>
 
@@ -77,8 +78,11 @@
       {data:bP.partData(data_ages, 2, datacount), id:'Region_X', header:["Women", "Man", "Who marries whom"]},
       ];
 
-      bP.draw(data, svg);
+      function drawGraphic(width) {
+          bP.draw(data, svg);
+      }
 
+      var pymChild = new pym.Child({ renderCallback: drawGraphic });
     </script>
   </div>
 </body>
