@@ -2,7 +2,7 @@
     if (d3.select('#slopeChart').style('width') <= '500px') {
         var narrow = true;
         var narrowComp = -85;
-        var bb=100;
+        var bb=80;
         console.log("narrow mode");
     } else {
         var narrow = false;
@@ -179,7 +179,7 @@
 //title
     function drawHeader(header, id){
         if (narrow) {
-            var size = "18px", left = 0;
+            var size = "18px", left = -10;
         } else {
             var size = "25px", left = 108;
         }
@@ -277,7 +277,7 @@
                             title: function() {
                                 var count = $(this).data('count');
                                 var pct = $(this).data('pct');
-                                return '<span class="tip top"># ' + count + ' </span>'
+                                return '<span class="tip top">Number of marriages: ' + count + ' </span>'
                                     + '<span class="tip bottom">(' + Math.ceil(pct*100) + '%)</span>';
                             }
                         });
