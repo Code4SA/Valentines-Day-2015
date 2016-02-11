@@ -1,15 +1,17 @@
 !function(){
     if (d3.select('#slopeChart').style('width') <= '320px') {
-        narrow = true;
-        narrowComp = -90;
+        var narrow = true;
+        var narrowComp = -80;
+        var bb=100;
         console.log("narrow mode");
     } else {
-        narrow = false;
-        narrowComp = 0;
+        var narrow = false;
+        var narrowComp = 0;
+        var bb=150;
     }
 
     var bP={};
-    var b = 30, bb=150, height=600, buffMargin=3, minHeight=14;
+    var b = 30, height=600, buffMargin=3, minHeight=14;
     var c1 = [-130, 40 + narrowComp];
     var c2 = [-50, 100];
     var c3 = [-10, 140]; //Column positions of labels.
@@ -173,9 +175,14 @@
 	}
 
 //title
-	function drawHeader(header, id){
+    function drawHeader(header, id){
+        if (narrow) {
+            var size = "18px", left = 0;
+        } else {
+            var size = "25px", left = 108;
+        }
 		d3.select("#"+id).append("g").attr("class","header").append("text").text(header[2])
-			.style("font-size","25px").attr("x",108+narrowComp).attr("y",-20).style("text-anchor","middle")
+			.style("font-size",size).attr("x",left).attr("y",-20).style("text-anchor","middle")
 			.style("font-weight","bold");
 
 		[0,1].forEach(function(d){
