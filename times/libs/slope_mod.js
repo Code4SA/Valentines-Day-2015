@@ -18,8 +18,8 @@
 
 	//var colors =[ "#FF9900","#109618", "#990099", "#0099C6", "#DC3912"];
 //	var colors =['#ffe5e5', '#ffcccc','#ffb3b3','#ff6666','#ff3333','#e60000','#990000','#660000	'];
-	var colors =['#ffe5e5', '#ffcccc','#ffb3b3','#ff6666','#ff3333','#ff3333','#ff6666','#ffb3b3','#ffcccc','#ffe5e5'];
-
+	var colors =['#ff6666', '#4d0000', '#800000', '#b30000', '#e60000', '#ff6666','#ffb3b3','#ffcccc','#ffb3b3','#ffcccc'];
+// #4d0000, #800000, #b30000, #e60000
 	bP.partData = function(data,p, counts){
 		var sData={};
 		var allpeople = counts[1] + counts[2]
