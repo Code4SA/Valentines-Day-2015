@@ -1,3 +1,12 @@
+body{
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1.5em;
+}
+
+.maintext {
+  border: 0.5px solid gray ;
+}
+
 .buttons {
     margin-bottom: 10px;
 }
@@ -57,7 +66,8 @@ svg {
 }
 
 svg text {
-    font-size:12px;
+    //font-size:12px;
+    font-size: 1.2em;
 }
 
 rect {
