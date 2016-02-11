@@ -270,16 +270,18 @@
 					.on("mouseover",function(d, i){ return bP.selectSegment(data, p, i); })
 				.on("mouseout",function(d, i){ return bP.deSelectSegment(data, p, i); });
 		        });
-                    $('rect.mainrect').tipsy({
-                        gravity: 'w',
-                        html: true,
-                        title: function() {
-                            var count = $(this).data('count');
-                            var pct = $(this).data('pct');
-                            return '<span class="tip top">' + count + '</span>'
-                                + '<span class="tip bottom">' + pct + '</span>';
-                        }
-                    });
+                    if (narrow) {
+                        $('rect.mainrect').tipsy({
+                            gravity: 'w',
+                            html: true,
+                            title: function() {
+                                var count = $(this).data('count');
+                                var pct = $(this).data('pct');
+                                return '<span class="tip top">' + count + '</span>'
+                                    + '<span class="tip bottom">' + pct + '</span>';
+                            }
+                        });
+                    }
                 });
     }
 
