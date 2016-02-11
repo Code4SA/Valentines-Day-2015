@@ -131,7 +131,7 @@
 			.enter().append("g").attr("class","mainbar");
 
 		mainbar.append("rect").attr("class","mainrect")
-			.attr("x", narrowComp).attr("y",function(d){ return d.middle-d.height/2; }) //!!!
+			.attr("x", narrowComp).attr("y",function(d){ return 10+d.middle-d.height/2; }) //!!!
 			.attr("width",b).attr("height",function(d){ return d.height; })
 			.style("shape-rendering","auto")
 			.style("fill-opacity",0).style("stroke-width","0.5")
@@ -141,7 +141,7 @@
 
 			// the main categories:
 		mainbar.append("text").attr("class","barlabel") // labels for gender
-			.attr("x", c1[p]).attr("y",function(d){ return d.middle+5;})
+			.attr("x", c1[p]).attr("y",function(d){ return d.middle+15;})
 			//.text(function(d,i){ return data.keys[p][i] + d.value + "( "+ Math.round(100*d.percent)+"%)";})
 			.text(function(d,i){ return data.keys[p][i] ;}) //+ " ("+ Math.ceil(100*d.percent)+"%)";})
 			.attr("text-anchor","start" );
@@ -153,14 +153,14 @@
 			.attr("text-anchor","start");*/
             if (!narrow) {
 		mainbar.append("text").attr("class","barpercent") // percentages
-			.attr("x", c3[p]).attr("y",function(d){ return d.middle+5;})
+			.attr("x", c3[p]).attr("y",function(d){ return d.middle+15;})
 			.text(function(d,i){ return  Math.ceil(100*d.percent)+"%" ;})
 			.attr("text-anchor","end").style("fill","#4B3621");
             }
 		d3.select("#"+id).select(".part"+p).select(".subbars")
 			.selectAll(".subbar").data(data.subBars[p]).enter()
 			.append("rect").attr("class","subbar")
-			.attr("x", narrowComp).attr("y",function(d){ return d.y}) //!!!!
+			.attr("x", narrowComp).attr("y",function(d){ return 10+d.y}) //!!!!
 			.attr("width",b).attr("height",function(d){ return d.h})
 		.style("fill",function(d){ return colors[d.key1];});
 	}
@@ -168,7 +168,7 @@
 	function drawEdges(data, id){
 		d3.select("#"+id).append("g")
 			.attr("class","edges")
-			 .attr("transform","translate("+ (b+narrowComp) + ",0)");// -60 !!!!
+			 .attr("transform","translate("+ (b+narrowComp) + ",10)");// -60 !!!!
 
 		d3.select("#"+id).select(".edges").selectAll(".edge")
 			.data(data.edges).enter().append("polygon").attr("class","edge")
@@ -192,6 +192,8 @@
 
 			h.append("text").text(header[d]).attr("x", (c1[d]-5))
 				.attr("y", -15).style("fill","#660000");
+		    h.append("text").text("(ages)").attr("x", (c1[d]-5))
+				.attr("y", 5).style("fill","#660000");
 
     //column with Counts
 		/*	h.append("text").text("Count (%)").attr("x", (c2[d]-5))
@@ -212,23 +214,23 @@
 			.selectAll(".mainbar").data(data.mainBars[p]);
 
 		mainbar.select(".mainrect").transition().duration(500)
-			.attr("y",function(d){ return d.middle-d.height/2;})
+			.attr("y",function(d){ return 10+d.middle-d.height/2;})
 			.attr("height",function(d){ return d.height;});
 
 		mainbar.select(".barlabel").transition().duration(500)
-			.attr("y",function(d){ return d.middle+5;});
+			.attr("y",function(d){ return 10+d.middle+5;});
 
 		mainbar.select(".barvalue").transition().duration(500)
-			.attr("y",function(d){ return d.middle+5;}).text(function(d,i){ return d.value ;});
+			.attr("y",function(d){ return 10+d.middle+5;}).text(function(d,i){ return d.value ;});
 
 		mainbar.select(".barpercent").transition().duration(500)
-			.attr("y",function(d){ return d.middle+5;})
+			.attr("y",function(d){ return 10+d.middle+5;})
 			.text(function(d,i){ return Math.ceil(100*d.percent)+"%" ;});
 
 		d3.select("#"+id).select(".part"+p).select(".subbars")
 			.selectAll(".subbar").data(data.subBars[p])
 			.transition().duration(500)
-			.attr("y",function(d){ return d.y}).attr("height",function(d){ return d.h});
+			.attr("y",function(d){ return 10+d.y}).attr("height",function(d){ return d.h});
 	}
 
 	function transitionEdges(data, id){
