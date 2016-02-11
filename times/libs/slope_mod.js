@@ -1,7 +1,7 @@
 !function(){
     if (d3.select('#slopeChart').style('width') <= '500px') {
         var narrow = true;
-        var narrowComp = -80;
+        var narrowComp = -85;
         var bb=100;
         console.log("narrow mode");
     } else {
