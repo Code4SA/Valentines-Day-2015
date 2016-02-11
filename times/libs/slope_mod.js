@@ -286,7 +286,13 @@
     }
 
 	bP.selectSegment = function(data, m, s){
-		data.forEach(function(k){
+	    data.forEach(function(k){
+                if (m === 0) {
+                    var gender = "female";
+                } else {
+                    var gender = "male";
+                }
+                ga('send', 'event', 'marriages', 'hover', gender, s );
 			var newdata =  {keys:[], data:[]};
 
 			newdata.keys = k.data.keys.map( function(d){ return d;});
