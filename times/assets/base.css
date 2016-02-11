@@ -87,5 +87,13 @@ rect {
 }
 
 .tip {
-    display: block;
+    //display: block;
+}
+
+.tipsy-inner {
+    background-color: #4d0000;
+    //text-align: left;
+    color: #AAAAAA;
+    border-color: #330000;
+    font-size: 1.5em
 }

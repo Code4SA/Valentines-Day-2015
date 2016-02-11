@@ -270,15 +270,16 @@
 					.on("mouseover",function(d, i){ return bP.selectSegment(data, p, i); })
 				.on("mouseout",function(d, i){ return bP.deSelectSegment(data, p, i); });
 		        });
-                    if (narrow) {
+                    if (true) {
                         $('rect.mainrect').tipsy({
-                            gravity: 'w',
+                            gravity: 's',
                             html: true,
+                            opacity: 0.9,
                             title: function() {
                                 var count = $(this).data('count');
                                 var pct = $(this).data('pct');
-                                return '<span class="tip top">' + count + '</span>'
-                                    + '<span class="tip bottom">' + pct + '</span>';
+                                return '<span class="tip top"># ' + count + ' </span>'
+                                    + '<span class="tip bottom">(' + Math.ceil(pct*100) + '%)</span>';
                             }
                         });
                     }
