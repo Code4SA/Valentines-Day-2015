@@ -199,9 +199,6 @@
 		/*	h.append("text").text("Count (%)").attr("x", (c2[d]-5))
 				.attr("y", -5).style("fill","grey");*/
 
-			h.append("line").attr("x1",c1[d]-10).attr("y1", -2)
-				.attr("x2",c3[d]-20).attr("y2", -2).style("stroke","#660000")
-				.style("stroke-width","0.5").style("shape-rendering","crispEdges");
 		});
 	}
 
