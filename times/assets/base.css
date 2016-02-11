@@ -85,3 +85,7 @@ svg text {
 rect {
     shape-rendering:crispEdges;
 }
+
+.tip {
+    display: block;
+}

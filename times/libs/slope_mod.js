@@ -135,7 +135,9 @@
 			.attr("width",b).attr("height",function(d){ return d.height; })
 			.style("shape-rendering","auto")
 			.style("fill-opacity",0).style("stroke-width","0.5")
-			.style("stroke","#ff3333").style("stroke-opacity",0);
+			.style("stroke","#ff3333").style("stroke-opacity",0)
+                .attr("data-count", function(d){return d.value})
+                .attr("data-pct", function(d){return d.percent});
 
 			// the main categories:
 		mainbar.append("text").attr("class","barlabel") // labels for gender
@@ -160,7 +162,7 @@
 			.append("rect").attr("class","subbar")
 			.attr("x", narrowComp).attr("y",function(d){ return d.y}) //!!!!
 			.attr("width",b).attr("height",function(d){ return d.h})
-			.style("fill",function(d){ return colors[d.key1];});
+		.style("fill",function(d){ return colors[d.key1];});
 	}
 
 	function drawEdges(data, id){
@@ -266,10 +268,20 @@
 					.select(".mainbars")
 					.selectAll(".mainbar")
 					.on("mouseover",function(d, i){ return bP.selectSegment(data, p, i); })
-					.on("mouseout",function(d, i){ return bP.deSelectSegment(data, p, i); });
-			});
-		});
-	}
+				.on("mouseout",function(d, i){ return bP.deSelectSegment(data, p, i); });
+		        });
+                    $('rect.mainrect').tipsy({
+                        gravity: 'w',
+                        html: true,
+                        title: function() {
+                            var count = $(this).data('count');
+                            var pct = $(this).data('pct');
+                            return '<span class="tip top">' + count + '</span>'
+                                + '<span class="tip bottom">' + pct + '</span>';
+                        }
+                    });
+                });
+    }
 
 	bP.selectSegment = function(data, m, s){
 		data.forEach(function(k){
