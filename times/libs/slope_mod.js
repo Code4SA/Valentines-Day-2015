@@ -1,5 +1,5 @@
 !function(){
-    if (d3.select('#slopeChart').style('width') <= '320px') {
+    if (d3.select('#slopeChart').style('width') <= '500px') {
         var narrow = true;
         var narrowComp = -80;
         var bb=100;
