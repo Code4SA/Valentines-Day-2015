@@ -58,6 +58,10 @@
         </div>
     </div>
 
+    <div class="col-md-2 col-sm-2 col-xs-2">
+      <a href="http://www.code4sa.org/" target="_blank"><img class="logo" src="http://code4sa.org/styles/images/code4sa_logo.png"/></a>
+    </div>
+
     <script type="text/javascript" src="libs/pym.js"></script>
     <script src="libs/d3.v3.min.js"></script>
     <script src="libs/slope_mod.js"></script>
@@ -166,7 +170,7 @@
         ['70+','70+',353]
       ];
 
-      var width = 510, height = 660, margin ={b:0, t:40, l:140, r:50};
+      var width = 510, height = 640, margin ={b:0, t:40, l:140, r:50};
 
       var svg = d3.select("#slopeChart")
       .append("svg").attr('width', '100%').attr('height', (height + margin.b + margin.t))
@@ -186,7 +190,7 @@
 
       var pymChild = new pym.Child({ renderCallback: drawGraphic });
     </script>
-    <a href="http://www.code4sa.org/" target="_blank"><img src="http://code4sa.org/styles/images/code4sa_logo.png"/></a>
+
   </div><!-- bootstrap container -->
 
 
