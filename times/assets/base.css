@@ -3,7 +3,7 @@ body{
   font-size: 1.5em;
 }
 
-.col-md-12 {
+.maintext {
   border: 0.5px solid gray ;
 }
 
@@ -66,7 +66,8 @@ svg {
 }
 
 svg text {
-    font-size:12px;
+    //font-size:12px;
+    font-size: 1.2em;
 }
 
 rect {

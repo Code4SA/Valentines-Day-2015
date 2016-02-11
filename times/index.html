@@ -13,30 +13,36 @@
 
   <div class="container">
 
-    <h1><mark>LOVE HOROSCOPE<small>  let the data speak </small></mark>
-    <img width=25 height=30 src="cupid.png">
+  <div class="col-md-6">
+    <h1>
+      <mark>LOVE HOROSCOPE</mark>
+    </h1>
+  </div>
+
+  <div class="col-md-6">
+    <h1>
+      <small>let the data speak </small><img width=25 height=30 src="cupid.png">
     </h1>
 
-    <div class="col-md-12">
-      Looking for love? The answers lie in the data
-      Love has no age restriction and no matter how old you are, you can still find a partner.
-      This is clear based on the latest official data on civil marriages in South Africa, which was released by Statistics South Africa earlier this week.
-      <br/>
-      The data offers a fascinating insight into marriage in the RSA, including the ages of couples who tied the knot. And it was especially heartwarming to discover how Golden Oldies born in the first quarter of the 20th Century found love and got married in the 21st Century.
-      <br/>
-      We also know that on dating sites over-optimistic men - and sometimes women – often take a big fat chance and look for a match with someone much younger than themselves.
-      <br/>
-      So what are you chances of finding a match among people of different ages, based on the real data of people who got married in 2014?
-      <br/>
-      This interactive visualisation gives a quick view of civil marriages in SA in 2014. More importantly, it also lets you check the odds of you marrying a spouse of different ages based on real numbers, not the stars.
-    </div>
+  </div>
 
+  <div class="col-md-12 maintext">
+      It’s the month of love, and we have no doubt that there’ll be a few rings in champagne glasses this Sunday. But how likely is it really?
+      While you’re busy counting roses and month anniversaries, we turned to the data for a more accurate view of who, or rather which ages, are most inclined to tie the knot.
+      The 2014 marriage data released this month by Statistics South Africa offers surprising insights on South African marriages.
+      For example, women are marrying younger…men, that is!
+      When we visualised the data, we found that women pensioners were less picky about age than men in the same age group.
+      While men over 70 tend to choose from the over 40 age range, we found that older women didn’t
+      mind dipping into the 17-25-year old pool.
+      So what does this mean? Maybe it’s time to adjust the ASL (Age, Sex, Location)
+      on your online dating profile.<br>
 
-    <div class="col-md-7"><div id="slopeChart"></div></div>
-    <div class="col-md-5">
-      How to play? Choose your gender (Female, left, male, right) and your own age range. So if you are a woman of 96 (yes some people that age do get married) hover the cursor over any category on the left and on the right  side you will see the age ranges in which you are most likely to find a marriage partner, based on actual weddings that took place in 2014.
-      <br/>
-      The figures in brackets are the number of marriages that took place in each age range in 2014 and the percentage they make up of the total marriages that year.    </div>
+      <strong>Use the interactive chart below to check out where you and your partner
+        sit on the marriage age scale.</strong><br>
+  </div>
+
+    <div class="col-md-12"><div id="slopeChart"></div></div>
+
 
     <script type="text/javascript" src="libs/pym.js"></script>
     <script src="libs/d3.v3.js"></script>
@@ -153,7 +159,7 @@
           {
               data: bP.partData(data_ages, 2, datacount),
               id: 'Region_X',
-              header: ["WOMEN (ages)", "MEN (ages)", "Mix and match"]
+              header: ["WOMEN", "MEN", "Mix and match"]
           },
       ];
 

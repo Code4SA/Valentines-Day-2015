@@ -163,8 +163,8 @@
 
 //title
 	function drawHeader(header, id){
-		d3.select("#"+id).append("g").attr("class","header").append("text").text(header[2]) //title
-			.style("font-size","25px").attr("x",108).attr("y",-20).style("text-anchor","middle") //!!!
+		d3.select("#"+id).append("g").attr("class","header").append("text").text(header[2])
+			.style("font-size","25px").attr("x",108).attr("y",-20).style("text-anchor","middle")
 			.style("font-weight","bold");
 
 		[0,1].forEach(function(d){
