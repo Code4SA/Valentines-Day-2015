@@ -1,0 +1,30 @@
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: auto;
+  position: relative;
+}
+
+#graph {
+    width: 100%;
+}
+
+#area .axis path, #area .axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.area {
+    fill: #4ca3bd;
+    width: 100%;
+}
+
+#slider1 {
+    margin-top: 30px;
+    margin-left: 50px;
+    margin-right: 20px;
+}
+
+button#gender {
+    margin-top: 50px;
+}
