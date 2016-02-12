@@ -48,7 +48,7 @@ d3.csv("data.csv", function(data) {
     genderdata = new GenderData(data);
 
     var container = d3.select("svg#area")
-    var container_width = parseInt(d3.select("#graph").style("width"))
+    var container_width = parseInt(d3.select("#container").style("width"))
     var gender = "male";
     var age = 28;
     var transition_duration = 50;
@@ -163,12 +163,12 @@ d3.csv("data.csv", function(data) {
         var options = count < 100 ? "limited" : "endless";
         var str = "";
         if (age < 20 && count < 10) {
-            str = "We don't want to be judgemental but ren't you a little young to get married?";
+            str = "We don't want to be judgemental but aren't you a little young to get married?";
         } else {
             str = String.format("As a {0} year old {1} your options are {2}.", age, gender_en.singular, options)
         }
 
-        str += String.format(" {0} {1} married in 2014.", fmt(count), gender_en.plural);
+        str += String.format(" {0} {1} of your age married in 2014.", fmt(count), gender_en.plural);
         msg.text(str)
     }
 })
