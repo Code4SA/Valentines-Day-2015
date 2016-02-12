@@ -152,17 +152,23 @@ d3.csv("data.csv", function(data) {
             return el.y
         }))
         var msg = d3.select("#narrative")
-        var gender = gender == "male" ? "women" : "men";
+        var gender_en = {
+            plural : gender == "male" ? "men" : "women",
+            singular : gender == "male" ? "man" : "woman",
+            other_plural : gender == "male" ? "women" : "men",
+            other_singular : gender == "male" ? "woman" : "man",
+        }
 
+        console.log(gender_en);
         var options = count < 100 ? "limited" : "endless";
         var str = "";
         if (age < 20 && count < 10) {
             str = "We don't want to be judgemental but ren't you a little young to get married?";
         } else {
-            str = String.format("As a {0} year old {1} your options are {2}.", age, gender, options)
+            str = String.format("As a {0} year old {1} your options are {2}.", age, gender_en.singular, options)
         }
 
-        str += String.format(" {0} {1} married in 2014.", fmt(count), gender);
+        str += String.format(" {0} {1} married in 2014.", fmt(count), gender_en.plural);
         msg.text(str)
     }
 })
