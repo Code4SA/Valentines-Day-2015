@@ -2,7 +2,6 @@ $.c4saAgeSlider = {
 
 	elementScope: 'body',
 	sliderClass: '.range-slider',
-	interestRate: $('#jsMonthsCalcIn').data("interest-rate"),
 
 	init: function (element, elementScope) {
 		$.c4saHelpers.applyToEach(
