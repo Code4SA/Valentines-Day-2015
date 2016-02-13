@@ -1,0 +1,15 @@
+.scorecard-cont {
+	position:relative;
+	.loading {
+		position:absolute;
+		top:30%;
+		left:50%;
+		margin-left:-15px;
+	}
+}
+
+.scorecard {
+	&.hide {
+		visibility:hidden;
+	}
+}

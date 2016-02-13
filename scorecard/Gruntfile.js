@@ -20,7 +20,7 @@ module.exports = function (grunt) {
 			},
 			csv2json: {
 				src: ['src/data/data.csv'],
-				dest: 'src/data/data.json'
+				dest: 'dist/assets/data/data.json'
 			}
 		},
 
@@ -125,6 +125,8 @@ module.exports = function (grunt) {
 						"dist/assets/js/polyfills/jquery.rangeslider.min.js",
 						"dist/assets/js/modules/jquery.c4saHelpers.js",
 						"dist/assets/js/modules/jquery.c4saForms.js",
+						"dist/assets/js/modules/jquery.c4saLoading.js",
+						"dist/assets/js/bespoke/jquery.c4saHandleAges.js",
 						"dist/assets/js/bespoke/jquery.c4saAgeSlider.js",
 						"dist/assets/js/bespoke/jquery.c4saGenderStyling.js",
 						"dist/assets/js/jquery.c4saValentines.js"

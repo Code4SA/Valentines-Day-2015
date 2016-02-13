@@ -1,0 +1,35 @@
+@-webkit-keyframes spin {
+    from {@include transform(rotate(0deg));}
+    30% {@include transform(rotate(225deg));}
+    to {@include transform(rotate(360deg));}
+}
+@-moz-keyframes spin {
+    from {@include transform(rotate(0deg));}
+    30% {@include transform(rotate(225deg));}
+    to {@include transform(rotate(360deg));}
+}
+@-o-keyframes spin {
+    from {@include transform(rotate(0deg));}
+    30% {@include transform(rotate(225deg));}
+    to {@include transform(rotate(360deg));}
+}
+@keyframes spin {
+    from {@include transform(rotate(0deg));}
+    30% {@include transform(rotate(225deg));}
+    to {@include transform(rotate(360deg));}
+}
+
+.loading {
+    display:inline-block; width:12px; height:12px; margin-right:10px; text-indent:-999em; vertical-align:middle; overflow:hidden; @include border-radius(50%); border-width:2px; border-style:solid; border-color:rgba(255,255,255,.2) rgba(255,255,255,.2) rgba(255,255,255,.8) #fff;
+    @include animation(spin 0.6s infinite steps(22));
+}
+.loading.small {width:12px; height:12px; border-width:2px;}
+.loading.large {width:30px; height:30px; border-width:3px;}
+.loading.light {border-color:rgba(255,255,255,.2) rgba(255,255,255,.2) rgba(255,255,255,.8) #fff;}
+.loading.dark {border-color:#ccc #ccc #333 #333;}
+
+html.has-no-cssanimations {
+    .loading {background:transparent image-url('fallbacks/spinner-small.gif') no-repeat 0 0; border:none;}
+    .loading.dark.small {background:transparent image-url('fallbacks/spinner-small.gif') no-repeat 0 0; border:none;}
+    .loading.dark.large {background:transparent image-url('fallbacks/spinner-large.gif') no-repeat 0 0; border:none;}
+}

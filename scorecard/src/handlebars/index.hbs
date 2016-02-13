@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Code4SA Valentines</title>
-	<link rel="stylesheet" href="assets/css/screen.css?nc=2" media="screen, projection, handheld, tv">
+	<link rel="stylesheet" href="assets/css/screen.css?nc=3" media="screen, projection, handheld, tv">
 	<script src="assets/js/polyfills/modernizr-custom.js"></script>
 	<!--[if lte IE 8]><script src="assets/js/polyfills/respond.min.js"></script><![endif]-->
 </head>
@@ -48,9 +48,11 @@
 			<div class="panel-header">
 				<h2>What the data tells us</h2>
 			</div>
-			<div class="panel-content">
-				<p><img src="assets/img/content/scorecard-3.png" alt="2nd most common age-pairing"></p>
-				<p>{Not the real copy} - Your age and gender pairing falls into the 3rd highest category.</p>
+			<div class="panel-content scorecard-cont">
+				<div id="jsScoreCard" class="scorecard hide">
+					<p><img id="jsScoreCardImg" src="" alt="2nd most common age-pairing"></p>
+					<p id="jsScoreCardText">{Not the real copy} - Your age pairing falls into the 3rd highest category.</p>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -63,12 +65,14 @@
 <script src="assets/js/polyfills/jquery.rangeslider.min.js"></script>
 <script src="assets/js/modules/jquery.c4saHelpers.js"></script>
 <script src="assets/js/modules/jquery.c4saForms.js"></script>
+<script src="assets/js/modules/jquery.c4saloading.js"></script>
+<script src="assets/js/bespoke/jquery.c4saHandleAges.js"></script>
 <script src="assets/js/bespoke/jquery.c4saAgeSlider.js"></script>
 <script src="assets/js/bespoke/jquery.c4saGenderStyling.js"></script>
 <script src="assets/js/jquery.c4saValentines.js"></script>
 
 <!--Concatenated and uglified js-->
-<!--<script src="assets/js/jquery.c4saValentines.min.js?nc=1"></script>-->
+<!--<script src="assets/js/jquery.c4saValentines.min.js?nc=4"></script>-->
 
 </body>
 </html>
