@@ -10,6 +10,16 @@ if (!String.format) {
   };
 }
 
+if (!Array.preAllocate) {
+    Array.preAllocate = function(size, val) {
+        var arr = [];
+        val = val || 0;
+        for (i = 0; i < size; i++)
+            arr.push(val);
+        return arr;
+    }
+}
+
 $.c4saHandleAges = {
 
 	dataLoaded: false,
@@ -66,12 +76,18 @@ $.c4saHandleAges = {
 	},
 
 	getAgesScore: function(youGender, manAge, womanAge, data) {
-        youGender = youGender || 'male';
-        var ageRanges = [];
-        for (i = 18; i <= 100; i += 5) {
-            ageRanges.push(i);
-        }
+        youGender = youGender || 'man';
+        themGender = youGender == "man" ? 'woman' : 'man';
+        youAge = youGender == 'man' ? manAge : womanAge;
+        themAge = youGender == 'man' ? womanAge : manAge;
+        youWedding = youGender == 'man' ? 'groom' : 'bride';
+        themWedding = youGender == 'man' ? 'bride' : 'groom';
 
+        var ageRanges = [], firstBound = 18, lastBound = 100, rangeWidth = 5;
+        for (i = firstBound; i <= lastBound; i += rangeWidth)
+            ageRanges.push(i);
+
+        var marriageAges = Array.preAllocate(ageRanges.length, 0);
         var getRangeIndex = function(val) {
             for (idx in ageRanges) {
                 if (val < ageRanges[idx])
@@ -79,32 +95,26 @@ $.c4saHandleAges = {
             }
             throw 'Value: ' + val + ' does not fit within range';
         }
-        var marriageAges = [];
-        for (el in ageRanges) marriageAges.push(0);
 
-        var total = 0;
-        var minAge = Infinity;
-        var maxAge = -Infinity;
+        var total = 0, minAge = Infinity, maxAge = -Infinity;
         for (el in data) {
             var m = data[el];
-            var groom = parseInt(m['groom']);
-            var bride = parseInt(m['bride']);
+            var youWeddingAge = parseInt(m[youWedding]);
+            var themWeddingAge = parseInt(m[themWedding]);
             var count = parseInt(m['count']);
-            if (groom == manAge) {
-                minAge = bride < minAge ? bride : minAge;
-                maxAge = bride > maxAge ? bride : maxAge;
+            if (youWeddingAge == manAge) {
+                minAge = themWeddingAge < minAge ? themWeddingAge : minAge;
+                maxAge = themWeddingAge > maxAge ? themWeddingAge : maxAge;
                 total += count;
-                idx = getRangeIndex(bride);
+                idx = getRangeIndex(themWeddingAge);
                 marriageAges[idx] += count;
             }
         }
         var ratings = [0, 0.20, 0.3, 0.40];
-        var womanRange = getRangeIndex(womanAge);
-        var numInRange = marriageAges[womanRange];
+        var themRange = getRangeIndex(themAge);
+        var numInRange = marriageAges[themRange];
         var perc = numInRange / total;
-        console.log(perc);
-        console.log(marriageAges)
-        var textAges = String.format('Did you know that in that year, a {0} year-old man married a {1} year-old woman, another {0} year-old man married a {2} year-old woman', manAge, minAge, maxAge) 
+        var textAges = String.format('Did you know that in that year, a {0} year-old {3} married a {1} year-old {4}, another {0} year-old {3} married a {2} year-old {4}', manAge, minAge, maxAge, youGender, themGender) 
         if (isNaN(perc)) perc = 0;
 
         var ratingsText = {
