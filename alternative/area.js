@@ -138,7 +138,6 @@ d3.csv("data.csv", function(data) {
     d3.selectAll(".gender-buttons button").on("click", function() {
         d3.selectAll(".gender-buttons button").classed("active", false)
         d3.select(this).classed("active", true)
-        console.log(this);
         transition_duration = 1250;
         gender = this.id;
         var data = transition(age, gender);
