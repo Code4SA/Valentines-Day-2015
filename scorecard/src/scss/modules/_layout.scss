@@ -12,8 +12,7 @@ html, body {
 }
 
 .page-frame {
-	padding:0 gutter();
-	margin-top:0 !important;
+	padding:gutter();
 }
 
 .layout {
