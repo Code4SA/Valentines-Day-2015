@@ -9,6 +9,11 @@ $.c4saAgeSlider = {
 			$.c4saHelpers.setCustomValue($.c4saAgeSlider.elementScope, elementScope),
 			$.c4saAgeSlider.rangeSlider
 		);
+		var resizeTimeout;
+		$(window).resize( function(){
+			clearTimeout(resizeTimeout);
+			resizeTimeout = setTimeout($.c4saAgeSlider.windowResize, 200);
+		});
 	},
 
 	rangeSlider: function(i, elem) {
@@ -27,8 +32,8 @@ $.c4saAgeSlider = {
 				verticalClass: 'rangeslider--vertical',
 				fillClass: 'rangeslider__fill',
 				handleClass: 'rangeslider__handle',
-				onInit: function(position, value) {
-					$.c4saAgeSlider.ageSliderUpdated($(this), value, position);
+				onInit: function() {
+					$.c4saAgeSlider.ageSliderUpdated($(this));
 				},
 				onSlide: function(position, value) {
 					$.c4saAgeSlider.ageSliderUpdated($(this), value, position);
@@ -38,6 +43,21 @@ $.c4saAgeSlider = {
 				}
 			}
 		);
+	},
+
+	windowResize: function(element, elementScope) {
+		$.c4saHelpers.applyToEach(
+			$.c4saHelpers.setCustomValue($.c4saAgeSlider.sliderClass, element),
+			$.c4saHelpers.setCustomValue($.c4saAgeSlider.elementScope, elementScope),
+			$.c4saAgeSlider.rangeSliderUpdate
+		)
+	},
+
+	rangeSliderUpdate: function(i, elem) {
+		var $input = $(elem);
+		var $output = $($input.data('output'));
+		var sliderHandlePos = $input.siblings('.rangeslider').find('.rangeslider__handle').css('left');
+		$output.css('left', sliderHandlePos);
 	},
 
 	ageSliderUpdated: function($this, value, position) {
