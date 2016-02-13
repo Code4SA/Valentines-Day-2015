@@ -50,6 +50,13 @@ $.c4saForms = {
 		} else {
 			$radio.closest('.enhanced-radio').removeClass('selected');
 		}
+	},
+
+	setBinaryToggle: function($radio) { //wont change the actual radio button, just the visual selected styling (needed for cases when unable to fire .change() on $radio)
+		var $binaryToggle = $radio.closest('.binary-toggle');
+		var $selectedERadio = $radio.parent('.enhanced-radio');
+		$binaryToggle.find('.enhanced-radio').removeClass('selected');
+		$selectedERadio.addClass('selected');
 	}
 
 };

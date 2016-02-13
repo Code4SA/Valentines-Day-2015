@@ -15,10 +15,22 @@ $.c4saGenderStyling = {
 	},
 
 	toggleGenderStyling: function($this) {
+		var $parentPanel = $this.closest('.panel');
+		var $partnerPanel = $parentPanel.siblings('.panel-gender');
+		var $partnerToggle
 		if ($this.attr('value') === 'man') {
-			$this.closest('.panel').removeClass('panel-woman').addClass('panel-man');
+			$parentPanel.removeClass('panel-woman').addClass('panel-man');
+			$partnerPanel.removeClass('panel-man').addClass('panel-woman');
+			$partnerToggle = $('.jsGenderToggle[value=woman]', $partnerPanel);
+			$partnerToggle.prop('checked', true);
+			$.c4saForms.setBinaryToggle($partnerToggle);
+
 		} else {
-			$this.closest('.panel').removeClass('panel-man').addClass('panel-woman');
+			$parentPanel.removeClass('panel-man').addClass('panel-woman');
+			$partnerPanel.removeClass('panel-woman').addClass('panel-man');
+			$partnerToggle = $('.jsGenderToggle[value=man]', $partnerPanel);
+			$partnerToggle.prop('checked', true);
+			$.c4saForms.setBinaryToggle($partnerToggle);
 		}
 	}
 
