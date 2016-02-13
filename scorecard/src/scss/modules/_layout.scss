@@ -1,0 +1,44 @@
+//For Microsoft browsers
+@at-root {
+	@-ms-viewport {
+		width:device-width;
+	}
+}
+
+html, body {
+	margin:0;
+	padding:0;
+	background:#fff;
+}
+
+.page-frame {
+	padding:0 gutter();
+	margin-top:0 !important;
+}
+
+.layout {
+	@include container($fixed-width);
+	@include layout(after);
+}
+
+.layout-fluid {
+	&, & .layout:not(.layout-fixed) {
+		@include container(auto);
+	}
+}
+
+.layout + .layout {
+	margin-top:gutter()*2;
+}
+
+@include susy-breakpoint($medium-bp, $medium-columns) {
+	.layout + .layout {
+		margin-top:gutter()*2;
+	}
+}
+
+@include susy-breakpoint($large-bp, $large-columns) {
+	.layout + .layout {
+		margin-top:gutter()*2;
+	}
+}

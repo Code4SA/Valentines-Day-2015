@@ -1,0 +1,66 @@
+/* colours */
+$pseudo-black:#333;
+$lightest-grey:#f1f1f1;
+$light-grey:#e5e5e5;
+$grey:#ccc;
+$dark-grey:#5d5d5d;
+$darkest-grey:#2d2d2d;
+
+$red:#fc5753;
+$light-red:lighten($red, 30%);
+$dark-red:darken($red, 20%);
+
+$green:#b3d685;
+$light-green:lighten($green, 25%);
+$dark-green:darken($green, 35%);
+
+$orange:#d45026;
+$light-orange:lighten($orange, 10%);
+$dark-orange:darken($orange, 10%);
+
+$lightest-blue:#cde4ee;
+$light-blue:#99bbc9;
+$blue:#5796b0;
+
+$link-color:#5596b2;
+$link-hover-color:$link-color;
+
+/* fonts */
+$default-font:Helvetica, serif;
+$default-font-size:16px;
+$default-line-height:1.7em;
+$default-font-colour:$pseudo-black;
+
+/* shapes */
+$default-radius:4px;
+
+/* forms */
+$field-height:40px;
+
+/* grid */
+$gutter-width:.4;
+$fixed-width:960px;
+$layout-vertical-flow:2em;
+$content-vertical-flow:1em;
+
+/* grid: main breakpoints (used by _layouts module, but also for consistency in bespoke styles) */
+$small-bp:20em;
+$small-medium-bp:28em;
+$medium-bp:37.5em;
+$large-bp:62em;
+$full-bp:75em;
+
+/* grid: responsive column counts */
+$small-columns:8;
+$medium-columns:12;
+$large-columns:12;
+$full-columns:24;
+$current-columns:$small-columns;
+
+$susy:(
+	container:auto,
+	columns:$current-columns,
+	gutters:$gutter-width,
+	gutter-position:after,
+);
+
