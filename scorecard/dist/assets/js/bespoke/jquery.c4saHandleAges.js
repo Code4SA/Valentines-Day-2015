@@ -77,11 +77,20 @@ $.c4saHandleAges = {
 
 	getAgesScore: function(youGender, manAge, womanAge, data) {
         youGender = youGender || 'man';
-        themGender = youGender == "man" ? 'woman' : 'man';
-        youAge = youGender == 'man' ? manAge : womanAge;
-        themAge = youGender == 'man' ? womanAge : manAge;
-        youWedding = youGender == 'man' ? 'groom' : 'bride';
-        themWedding = youGender == 'man' ? 'bride' : 'groom';
+        var genderData = {
+            you : {
+                gender : youGender,
+                age : (youGender == 'man') ? manAge : womanAge,
+                wedding : (youGender == 'man') ? 'groom' : 'bride'
+            },
+            them : {
+                gender : (youGender == "man") ? 'woman' : 'man',
+                age : (youGender == 'man') ? womanAge : manAge,
+                wedding : (youGender == 'man') ? 'bride' : 'groom'
+            }
+        }
+        var you = genderData.you;
+        var them = genderData.them;
 
         var ageRanges = [], firstBound = 18, lastBound = 100, rangeWidth = 5;
         for (i = firstBound; i <= lastBound; i += rangeWidth)
@@ -99,22 +108,22 @@ $.c4saHandleAges = {
         var total = 0, minAge = Infinity, maxAge = -Infinity;
         for (el in data) {
             var m = data[el];
-            var youWeddingAge = parseInt(m[youWedding]);
-            var themWeddingAge = parseInt(m[themWedding]);
             var count = parseInt(m['count']);
-            if (youWeddingAge == manAge) {
-                minAge = themWeddingAge < minAge ? themWeddingAge : minAge;
-                maxAge = themWeddingAge > maxAge ? themWeddingAge : maxAge;
+            you.weddingAge = parseInt(m[you.wedding]);
+            them.weddingAge = parseInt(m[them.wedding]);
+            if (you.weddingAge == manAge) {
+                minAge = them.weddingAge < minAge ? them.weddingAge : minAge;
+                maxAge = them.weddingAge > maxAge ? them.weddingAge : maxAge;
                 total += count;
-                idx = getRangeIndex(themWeddingAge);
+                idx = getRangeIndex(them.weddingAge);
                 marriageAges[idx] += count;
             }
         }
         var ratings = [0, 0.20, 0.3, 0.40];
-        var themRange = getRangeIndex(themAge);
+        var themRange = getRangeIndex(them.age);
         var numInRange = marriageAges[themRange];
         var perc = numInRange / total;
-        var textAges = String.format('Did you know that in that year, a {0} year-old {3} married a {1} year-old {4}, another {0} year-old {3} married a {2} year-old {4}', manAge, minAge, maxAge, youGender, themGender) 
+        var textAges = String.format('Did you know that in that year, a {0} year-old {3} married a {1} year-old {4}, another {0} year-old {3} married a {2} year-old {4}', you.age, minAge, maxAge, you.gender, them.gender) 
         if (isNaN(perc)) perc = 0;
 
         var ratingsText = {
