@@ -1,5 +1,5 @@
 .binary-toggle {
-	background:$light-grey; @include border-radius(5px);
+	background:$grey; @include border-radius(5px); display:inline-block;
 	.btoggle {
 		width:50%; display:block; float:left; position:relative; margin:0; white-space:nowrap;
 		> input {display:inline-block; vertical-align:middle; margin-top:0;}
@@ -12,7 +12,7 @@
 }
 
 html.js-ready .binary-toggle {
-	max-width:250px; height:36px;
+	width:250px; max-width:100%; height:36px;
 	.btoggle {
 		label {
 			text-align:center; display:block; line-height:36px; height:36px; padding:0 1em;
@@ -27,6 +27,6 @@ html.js-ready .binary-toggle {
 			}
 			&, input {cursor:default;}
 		}
-		> .enhanced-radio {position:absolute; @include opacity(0);}
+		.enhanced-radio, input {position:absolute; @include opacity(0); cursor:pointer;}
 	}
 }
