@@ -122,7 +122,9 @@ module.exports = function (grunt) {
 					'dist/assets/js/jquery.c4saValentines.min.js': [
 						"dist/assets/js/polyfills/console.js",
 						"dist/assets/js/lib/jquery.min.js",
+						"dist/assets/js/polyfills/jquery.rangeslider.min.js",
 						"dist/assets/js/modules/jquery.c4saHelpers.js",
+						"dist/assets/js/modules/jquery.c4saForms.js",
 						"dist/assets/js/jquery.c4saValentines.js"
 					]
 				}

@@ -18,18 +18,18 @@ $orange:#d45026;
 $light-orange:lighten($orange, 10%);
 $dark-orange:darken($orange, 10%);
 
-$lightest-blue:#cde4ee;
-$light-blue:#99bbc9;
-$blue:#5796b0;
+$blue:#6ec7d7;
+$peach:#fe9a86;
 
 $link-color:#5596b2;
 $link-hover-color:$link-color;
+
 
 /* fonts */
 $default-font:Helvetica, serif;
 $default-font-size:16px;
 $default-line-height:1.7em;
-$default-font-colour:$pseudo-black;
+$default-font-colour:$dark-grey;
 
 /* shapes */
 $default-radius:4px;

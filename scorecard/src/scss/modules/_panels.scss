@@ -35,15 +35,15 @@
 	}
 	background:$contentBg;
 }
-.panel-weighty {
-	@include panelStyle($dark-grey, #fff, #fff);
+.panel-data {
+	@include panelStyle($dark-grey, $pseudo-black, $lightest-grey);
 	.panel-header .icon {@extend .svg-info-white-7x16 !optional;}
 }
-.panel-search {
-	@include panelStyle($dark-grey, #fff, #fff);
+.panel-woman {
+	@include panelStyle($blue, $pseudo-black, $lightest-grey);
 	.panel-header .icon {@extend .svg-search-white-16x16 !optional;}
 }
-.panel-highlight {
-	@include panelStyle($yellow, $pseudo-black, #fff);
+.panel-woman {
+	@include panelStyle($peach, $pseudo-black, $lightest-grey);
 	.panel-header .icon {@extend .svg-info-white-7x16 !optional;}
 }

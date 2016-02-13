@@ -1,31 +1,29 @@
 .binary-toggle {
-	display:inline-block; border:1px solid $grey; background:#fff; @include border-radius(2px);
+	background:$light-grey; @include border-radius(5px);
 	.btoggle {
 		width:50%; display:block; float:left; position:relative; margin:0; white-space:nowrap;
 		> input {display:inline-block; vertical-align:middle; margin-top:0;}
 		&:first-child label {margin-right:1em;}
 		label {
-			cursor:pointer; text-transform:uppercase; display:inline; font-size:14px; padding:0; margin:0;
-			&.on {color:$darkest-green;}
-			&.off {color:$red;}
+			cursor:pointer; display:inline; padding:0; margin:0; font-weight:700;
 		}
 	}
 	@include clear-fix;
 }
 
 html.js-ready .binary-toggle {
-	max-width:180px;
+	max-width:250px; height:36px;
 	.btoggle {
 		label {
-			text-align:center; display:block; line-height:30px; padding:0 1em;
+			text-align:center; display:block; line-height:36px; height:36px; padding:0 1em;
 		}
 		&:first-child label {margin:0;}
 		.enhanced-radio.selected {
 			+ label {
-				margin-top:-1px; cursor:default;
-				@include border-radius(2px); color:#fff; background-color:$orange; @include box-shadow(0 2px 0 shade($orange, 10%)); display:block; @include transition(background 0.3s ease);
-				&.on {background-color:$green; @include box-shadow(0 2px 0 shade($green, 30%)); @include text-shadow(); margin-left:-1px;}
-				&.off {background-color:$red; @include box-shadow(0 2px 0 shade($red, 30%)); margin-right:-1px;}
+				margin-top:-2px; cursor:default; line-height:40px; height:40px;
+				@include border-radius(5px); color:#fff; display:block;
+				&.man {background-color:$blue; margin-left:-1px;}
+				&.woman {background-color:$peach; margin-right:-1px;}
 			}
 			&, input {cursor:default;}
 		}
