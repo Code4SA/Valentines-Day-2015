@@ -20,8 +20,8 @@
 			<div class="panel-content">
 				<label>Are you a man or woman?</label>
 				<div class="binary-toggle">
-					<div class="btoggle"><input type="radio" name="you-gender" value="you-woman" id="you-gender-woman"><label for="you-gender-woman" class="woman">Woman</label></div>
-					<div class="btoggle"><input type="radio" name="you-gender" value="you-man" id="you-gender-man" checked="checked"><label for="you-gender-man" class="man">Man</label></div>
+					<div class="btoggle"><input type="radio" name="you-gender" value="woman" id="you-gender-woman" class="jsGenderToggle"><label for="you-gender-woman" class="woman">Woman</label></div>
+					<div class="btoggle"><input type="radio" name="you-gender" value="man" id="you-gender-man" class="jsGenderToggle" checked="checked"><label for="you-gender-man" class="man">Man</label></div>
 				</div>
 				<label for="jsYouAge">How old are you?</label>
 				<input type="range" class="range-slider" min="0" max="100" step="1" value="18" name="jsYouAge" id="jsYouAge" oninput="jsYouAgeOut.value = jsYouAge.value">
@@ -36,8 +36,8 @@
 			<div class="panel-content">
 				<label>Are you a man or woman?</label>
 				<div class="binary-toggle">
-					<div class="btoggle"><input type="radio" name="partner-gender" value="woman" id="partner-gender-woman" checked="checked"><label for="partner-gender-woman" class="woman">Woman</label></div>
-					<div class="btoggle"><input type="radio" name="partner-gender" value="man" id="partner-gender-man"><label for="partner-gender-man" class="man">Man</label></div>
+					<div class="btoggle"><input type="radio" name="partner-gender" value="woman" id="partner-gender-woman" class="jsGenderToggle" checked="checked"><label for="partner-gender-woman" class="woman">Woman</label></div>
+					<div class="btoggle"><input type="radio" name="partner-gender" value="man" id="partner-gender-man" class="jsGenderToggle"><label for="partner-gender-man" class="man">Man</label></div>
 				</div>
 				<label for="jsPartnerAge">How old is your partner?</label>
 				<input type="range" class="range-slider" min="0" max="100" step="1" value="18" name="jsPartnerAge" id="jsPartnerAge" oninput="jsPartnerAgeOut.value = jsPartnerAge.value">
