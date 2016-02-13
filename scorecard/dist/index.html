@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Code4SA Valentines</title>
-	<link rel="stylesheet" href="assets/css/screen.css" media="screen, projection, handheld, tv">
+	<link rel="stylesheet" href="assets/css/screen.css?nc=1" media="screen, projection, handheld, tv">
 	<script src="assets/js/polyfills/modernizr-custom.js"></script>
 	<!--[if lte IE 8]><script src="assets/js/polyfills/respond.min.js"></script><![endif]-->
 </head>
@@ -24,8 +24,8 @@
 					<div class="btoggle"><input type="radio" name="you-gender" value="man" id="you-gender-man" class="jsGenderToggle" checked="checked"><label for="you-gender-man" class="man">Man</label></div>
 				</div>
 				<label for="jsYouAge">How old are you?</label>
-				<input type="range" class="range-slider" min="0" max="100" step="1" value="18" name="jsYouAge" id="jsYouAge" oninput="jsYouAgeOut.value = jsYouAge.value">
-				<div class="tooltip-bubble"><output name="jsYouAgeOut" id="jsYouAgeOut">18</output></div>
+				<input type="range" class="range-slider" min="0" max="100" step="1" value="18" name="jsYouAge" id="jsYouAge" data-output="#jsYouAgeOut" oninput="jsYouAgeOut.value = jsYouAge.value">
+				<output name="jsYouAgeOut" id="jsYouAgeOut" class="tooltip-bubble" style="left:18%;">18</output>
 			</div>
 		</div>
 		<div class="icon-wedding-rings"></div>
@@ -40,8 +40,8 @@
 					<div class="btoggle"><input type="radio" name="partner-gender" value="man" id="partner-gender-man" class="jsGenderToggle"><label for="partner-gender-man" class="man">Man</label></div>
 				</div>
 				<label for="jsPartnerAge">How old is your partner?</label>
-				<input type="range" class="range-slider" min="0" max="100" step="1" value="18" name="jsPartnerAge" id="jsPartnerAge" oninput="jsPartnerAgeOut.value = jsPartnerAge.value">
-				<div class="tooltip-bubble"><output name="jsPartnerAgeOut" id="jsPartnerAgeOut">18</output></div>
+				<input type="range" class="range-slider" min="0" max="100" step="1" value="18" name="jsPartnerAge" id="jsPartnerAge" data-output="#jsPartnerAgeOut" oninput="jsPartnerAgeOut.value = jsPartnerAge.value">
+				<output name="jsPartnerAgeOut" id="jsPartnerAgeOut" class="tooltip-bubble">18</output>
 			</div>
 		</div>
 		<div class="panel panel-data">
@@ -56,9 +56,8 @@
 	</div>
 </div>
 
-<!-- loading CSS images at end of document as not essential to initial page load and render -->
-<link href="assets/css/images.css" rel="stylesheet" type="text/css" property="stylesheet">
-<script src="assets/js/jquery.c4saValentines.min.js"></script>
+<link href="assets/css/images.css?nc=1" rel="stylesheet" type="text/css" property="stylesheet">
+<script src="assets/js/jquery.c4saValentines.min.js?nc=1"></script>
 
 </body>
 </html>

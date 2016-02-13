@@ -28,21 +28,30 @@ $.c4saAgeSlider = {
 				verticalClass: 'rangeslider--vertical',
 				fillClass: 'rangeslider__fill',
 				handleClass: 'rangeslider__handle',
-				onInit: function() {
-					$.c4saAgeSlider.agePairingCalc($(this));
+				onInit: function(position, value) {
+					$.c4saAgeSlider.ageSliderUpdated($(this), value, position);
 				},
 				onSlide: function(position, value) {
-					$.c4saAgeSlider.agePairingCalc($(this));
+					$.c4saAgeSlider.ageSliderUpdated($(this), value, position);
 				},
 				onSlideEnd: function(position, value) {
-					$.c4saAgeSlider.agePairingCalc($(this));
+					$.c4saAgeSlider.ageSliderUpdated($(this), value, position);
 				}
 			}
 		);
 	},
 
+	ageSliderUpdated: function($this, value, position) {
+		var $output = $($this[0].$element.data('output'));
+		if (position === undefined) {
+			position = $this[0].position + 'px';
+		}
+		$output.css('left', position);
+		$.c4saAgeSlider.agePairingCalc($this);
+	},
+
 	agePairingCalc: function($this) {
-		
+
 	}
 
 };
