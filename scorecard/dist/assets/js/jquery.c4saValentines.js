@@ -1,6 +1,7 @@
 $.c4saValentines = {
 	init: function () {
 		$.c4saForms.init();
+		$.c4saAgeSlider.init();
 	}
 };
 

@@ -125,6 +125,7 @@ module.exports = function (grunt) {
 						"dist/assets/js/polyfills/jquery.rangeslider.min.js",
 						"dist/assets/js/modules/jquery.c4saHelpers.js",
 						"dist/assets/js/modules/jquery.c4saForms.js",
+						"dist/assets/js/bespoke/jquery.c4saAgeSlider.js",
 						"dist/assets/js/jquery.c4saValentines.js"
 					]
 				}
@@ -142,6 +143,13 @@ module.exports = function (grunt) {
 			sass: {
 				files: ['src/scss/**/*.scss'],
 				tasks: ['sass'],
+				options: {
+					spawn: false
+				}
+			},
+			js: {
+				files: ['dist/**/*.js'],
+				tasks: ['uglify'],
 				options: {
 					spawn: false
 				}
