@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Code4SA Valentines</title>
-	<link rel="stylesheet" href="assets/css/screen.css?nc=3" media="screen, projection, handheld, tv">
+	<link rel="stylesheet" href="assets/css/screen.css?nc=4" media="screen, projection, handheld, tv">
 	<script src="assets/js/polyfills/modernizr-custom.js"></script>
 	<!--[if lte IE 8]><script src="assets/js/polyfills/respond.min.js"></script><![endif]-->
 </head>
@@ -15,7 +15,7 @@
 	<div class="layout">
 		<div class="panel panel-gender">
 			<div class="panel-header">
-				<h2>About you</h2>
+				<h2>What is your gender and age?</h2>
 			</div>
 			<div class="panel-content">
 				<label>Are you a man or woman?</label>
@@ -28,22 +28,24 @@
 				<input type="range" class="range-slider" min="0" max="100" step="1" value="18" name="jsYouAge" id="jsYouAge" data-output="#jsYouAgeOut" oninput="jsYouAgeOut.value = jsYouAge.value">
 			</div>
 		</div>
-		<div class="icon-wedding-rings"></div>
 		<div class="panel panel-gender">
 			<div class="panel-header">
-				<h2>About your partner</h2>
+				<h2>How old is your partner?</h2>
 			</div>
 			<div class="panel-content">
-				<label>Are you a man or woman?</label>
-				<div class="binary-toggle">
-					<div class="btoggle"><input type="radio" name="partner-gender" value="woman" id="partner-gender-woman" class="jsGenderToggle" checked="checked"><label for="partner-gender-woman" class="woman">Woman</label></div>
-					<div class="btoggle"><input type="radio" name="partner-gender" value="man" id="partner-gender-man" class="jsGenderToggle"><label for="partner-gender-man" class="man">Man</label></div>
+				<div class="partner-superfluous">
+					<label>Is your partner a man or woman?</label>
+					<div class="binary-toggle">
+						<div class="btoggle"><input type="radio" name="partner-gender" value="woman" id="partner-gender-woman" class="jsGenderToggle" checked="checked"><label for="partner-gender-woman" class="woman">Woman</label></div>
+						<div class="btoggle"><input type="radio" name="partner-gender" value="man" id="partner-gender-man" class="jsGenderToggle"><label for="partner-gender-man" class="man">Man</label></div>
+					</div>
 				</div>
-				<label for="jsPartnerAge">How old is your partner?</label>
+				<label for="jsPartnerAge" class="partner-superfluous">How old is your partner?</label>
 				<output name="jsPartnerAgeOut" id="jsPartnerAgeOut" class="tooltip-bubble" style="left:18%;">18</output>
 				<input type="range" class="range-slider" min="0" max="100" step="1" value="18" name="jsPartnerAge" id="jsPartnerAge" data-output="#jsPartnerAgeOut" oninput="jsPartnerAgeOut.value = jsPartnerAge.value">
 			</div>
 		</div>
+		<div class="icon-wedding-rings"></div>
 		<div class="panel panel-data">
 			<div class="panel-header">
 				<h2>What the data tells us</h2>
