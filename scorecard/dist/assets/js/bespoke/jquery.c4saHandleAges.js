@@ -1,6 +1,8 @@
 $.c4saHandleAges = {
 
+	dataLoaded: false,
 	dataUrl: 'assets/data/data.json',
+	json: undefined,
 	imageUrl: 'assets/img/content/scorecard-',
 	imageExtension: '.png',
 	manAge: undefined,
@@ -16,7 +18,11 @@ $.c4saHandleAges = {
 			$.c4saHandleAges.manAge = $('#jsPartnerAge').val();
 		}
 		$.c4saHandleAges.scoreLoading(true);
-		$.c4saHandleAges.loadData();
+		if ($.c4saHandleAges.dataLoaded) {
+			$.c4saHandleAges.getAgesScore($.c4saHandleAges.manAge, $.c4saHandleAges.womanAge, $.c4saHandleAges.json);
+		} else {
+			$.c4saHandleAges.loadData();
+		}
 	},
 
 	scoreLoading: function(loading) {
@@ -36,19 +42,20 @@ $.c4saHandleAges = {
 				'url': $.c4saHandleAges.dataUrl,
 				'dataType': "json",
 				'success': function (data) {
-					json = data;
+					$.c4saHandleAges.json = data;
 				}
 			}).done(function() {
-				$.c4saHandleAges.getAgesScore($.c4saHandleAges.manAge, $.c4saHandleAges.womanAge, json);
+				$.c4saHandleAges.dataLoaded = true;
+				$.c4saHandleAges.getAgesScore($.c4saHandleAges.manAge, $.c4saHandleAges.womanAge, $.c4saHandleAges.json);
 			});
 		})();
 	},
 
 	getAgesScore: function(manAge, womanAge, data) {
 		// all yours...
-		console.log("Man's age: " + manAge);
-		console.log("Woman's age: " + womanAge);
-		console.log("Data: " + data);
+		//console.log("Man's age: " + manAge);
+		//console.log("Woman's age: " + womanAge);
+		//console.log("Data: " + data);
 
 		//example of updating score area
 		$.c4saHandleAges.updateScore(4, 'Some text');

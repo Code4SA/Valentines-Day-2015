@@ -6,13 +6,13 @@ $.c4saLoading = {
         if ($target.siblings('.loading').length < 1) {
             $target.after($.c4saLoading.loadingHTML);
             $target.siblings('.loading').addClass(classes);
-            $target.hide();
+            $target.addClass('hide');
         }
     },
 
     reverter: function($target) {
         $target.siblings('.loading').remove();
-        $target.show();
+        $target.removeClass('hide');
     }
 
 };
