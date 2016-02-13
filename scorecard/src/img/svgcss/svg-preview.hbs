@@ -1,0 +1,16 @@
+<section class="layout">
+	<div class="panel">
+		<div class="panel-head">
+			<h3>SVG Icons</h3>
+		</div>
+		<div class="panel-content">
+			<div class="layout">
+				{{#each icons}} {{#with this}}
+				<div class="layout-third nowrap-ellipsis" style="margin-bottom:2em;">
+					<span {{selectorType}}="{{selectorString}}{{name}} icon" style="width: {{width}}px; height: {{height}}px;"></span> <code class="icon-text small">{{prefix}}{{name}}</code>
+				</div>
+				{{/with}}{{/each}}
+			</div>
+		</div>
+	</div>
+</section>

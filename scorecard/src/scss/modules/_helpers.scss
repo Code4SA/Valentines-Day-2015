@@ -1,0 +1,211 @@
+@function image-url($url) {
+	@return url("/dist/assets/img/#{$url}"); //the "/dist/" normally wouldn't be included, as it would itself be the root, but had to do this for the sake of GitHub pages.
+}
+
+@mixin border-radius($radius:$default-radius) {
+	-webkit-border-radius:$radius;
+	-moz-border-radius:$radius;
+	-o-border-radius:$radius;
+	border-radius:$radius;
+}
+
+@mixin box-shadow($shadow: 0 1px 0 rgba(0,0,0,.1)) {
+	-webkit-box-shadow:$shadow;
+	-moz-box-shadow:$shadow;
+	-o-box-shadow:$shadow;
+	box-shadow:$shadow;
+}
+
+@mixin opacity($opacity:0) {
+	$opacityPercent:$opacity * 100;
+	-moz-opacity:$opacity;
+	-khtml-opacity:$opacity;
+	filter:alpha(opacity=$opacityPercent);
+	//-ms-filter:progid:DXImageTransform.Microsoft.Alpha(opacity='#{$opacityPercent}');
+	opacity:$opacity;
+}
+
+@mixin gradient($top, $bottom) {
+	background-color:$bottom;
+	background-image:-webkit-linear-gradient(top, $top, $bottom);
+	background-image:-moz-linear-gradient(top, $top, $bottom);
+	background-image:-o-linear-gradient(top, $top, $bottom);
+	background-image:-ms-linear-gradient(top, $top, $bottom);
+	background-image:linear-gradient(to bottom, $top, $bottom);
+	//filter:progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$top}', endColorStr='#{$bottom}');
+}
+
+@mixin gradientX($left, $right) {
+	background-color:$right;
+	background-image:-webkit-linear-gradient(left, $left, $right);
+	background-image:-moz-linear-gradient(left, $left, $right);
+	background-image:-o-linear-gradient(left, $left, $right);
+	background-image:-ms-linear-gradient(left, $left, $right);
+	background-image:linear-gradient(to right, $left, $right);
+}
+
+@mixin diagGradient($topLeft, $bottomRight) {
+	background-color:$bottomRight;
+	background-image:-webkit-linear-gradient(top left, $topLeft, $bottomRight);
+	background-image:-moz-linear-gradient(top left, $topLeft, $bottomRight);
+	background-image:-o-linear-gradient(top left, $topLeft, $bottomRight);
+	background-image:-ms-linear-gradient(top left, $topLeft, $bottomRight);
+	background-image:linear-gradient(to bottom right, $topLeft, $bottomRight);
+}
+
+@mixin text-shadow($shadow: 0 1px 0 rgba(0,0,0,.3)) {
+	-moz-text-shadow:$shadow;
+	-webkit-text-shadow:$shadow;
+	-o-text-shadow:$shadow;
+	-ms-text-shadow:$shadow;
+	text-shadow:$shadow;
+}
+
+@mixin transform($arguments) {
+	-webkit-transform:$arguments;
+	-moz-transform:$arguments;
+	-o-transform:$arguments;
+	-ms-transform:$arguments;
+	transform:$arguments;
+}
+
+@mixin transform-origin($arguments) {
+	-webkit-transform-origin:$arguments;
+	-moz-transform-origin:$arguments;
+	-o-transform-origin:$arguments;
+	-ms-transform-origin:$arguments;
+	transform-origin:$arguments;
+}
+
+@mixin animation($arguments) {
+	-webkit-animation:$arguments;
+	-moz-animation:$arguments;
+	-o-animation:$arguments;
+	-ms-animation:$arguments;
+	animation:$arguments;
+}
+
+@mixin rotation($deg:5deg) {
+	@include transform(rotate($deg));
+}
+
+@mixin transition($transition:all 0.5s ease) {
+	-webkit-transition:$transition;
+	-moz-transition:$transition;
+	-o-transition:$transition;
+	transition:$transition;
+}
+
+@mixin placeholder() {
+	$colour:#999;
+	$weight:400;
+	$size:1em;
+	&::-webkit-input-placeholder {
+		color:$colour;
+		font-weight:$weight;
+		font-size:$size;
+	}
+	&:-moz-placeholder {
+		color:$colour;
+		font-weight:$weight;
+		font-size:$size;
+	}
+	&::-moz-placeholder {
+		color:$colour;
+		font-weight:$weight;
+		font-size:$size;
+	}
+	&:-ms-input-placeholder {
+		color:$colour;
+		font-weight:$weight;
+		font-size:$size;
+	}
+}
+
+@mixin box-sizing($boxsizing) {
+	-moz-box-sizing:$boxsizing;
+	-webkit-box-sizing:$boxsizing;
+	box-sizing:$boxsizing;
+}
+
+@mixin clear-fix() {
+	*zoom:1;
+	&:before, &:after {
+		content:" ";
+		display:table;
+	}
+	&:after {
+		clear:both;
+	}
+}
+
+@mixin retina($ratio:1.5) {
+	$dpi:$ratio * 96;
+	$opera-ratio:$ratio * 100;
+	@media only screen and (-webkit-min-device-pixel-ratio:#{$ratio}),
+	only screen and (-o-min-device-pixel-ratio:'#{$opera-ratio}/100'),
+	only screen and (min-resolution:#{$dpi}dpi),
+	only screen and (min-resolution:#{$ratio}dppx) {
+		@content;
+	}
+}
+
+@mixin applyToBreakpoints() {
+	@include susy-breakpoint($small-bp, $small-columns) {
+		@content;
+	}
+	@include susy-breakpoint($small-medium-bp, $small-columns) {
+		@content;
+	}
+	@include susy-breakpoint($medium-bp, $medium-columns) {
+		@content;
+	}
+	@include susy-breakpoint($large-bp, $large-columns) {
+		@content;
+	}
+}
+
+/* table carpentry */
+@mixin dismantleTable() {
+	display:block;
+	tbody, th, td, tr {
+		display:block;
+		text-align:left;
+	}
+	thead {
+		display:none;
+	}
+}
+
+@mixin assembleTable() {
+	display:table;
+	width:100%;
+	thead {
+		display:table-header-group;
+	}
+	tbody {
+		display:table-row-group;
+	}
+	tr {
+		display:table-row;
+	}
+	th, td {
+		display:table-cell;
+		float:none;
+		margin:0;
+	}
+}
+
+@mixin img-responsive() {
+	width:auto;
+	max-width:100%;
+	display:block;
+}
+
+@mixin img-center() {
+	margin:0 auto;
+}
+
+@mixin img-circle() {
+	border-radius:50%;
+}

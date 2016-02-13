@@ -4,12 +4,8 @@ body {
   position: relative;
 }
 
-#container {
-    width: 50%;
-}
-
 #graph {
-    display: none;
+    width: 100%;
 }
 
 #area .axis path, #area .axis line {
@@ -21,7 +17,6 @@ body {
 .area {
     fill: #4ca3bd;
     width: 100%;
-    display: none;
 }
 
 #slider1 {

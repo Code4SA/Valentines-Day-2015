@@ -1,0 +1,36 @@
+* + .panel, .panel + * {margin-top:$layout-vertical-flow;}
+.panel {background:#fff; @include border-radius();}
+.panel-header, .panel-content, .panel-footer {
+	padding:1em; text-align:center;
+	> * {margin:0;}
+	> * + * {margin-top:1em;}
+	@include clear-fix();
+}
+.panel-header {
+	@include border-radius($default-radius $default-radius 0 0);
+}
+.panel-content {@include border-radius();}
+.panel-header + .panel-content {@include border-radius(0 0 $default-radius $default-radius);}
+
+@mixin panelStyle($headerBg, $headerColour, $contentBg) {
+	.panel-header {
+		background:$headerBg; color:$headerColour;
+	}
+	background:$contentBg;
+}
+.panel {
+	@include panelStyle($dark-grey, #fff, $lightest-grey);
+	.panel-header .icon {@extend .svg-info-white-7x16 !optional;}
+	img {
+		@include img-responsive();
+		@include img-center();
+	}
+}
+.panel-man {
+	@include panelStyle($blue, $pseudo-black, $lightest-grey);
+	.panel-header .icon {@extend .svg-search-white-16x16 !optional;}
+}
+.panel-woman {
+	@include panelStyle($peach, $pseudo-black, $lightest-grey);
+	.panel-header .icon {@extend .svg-info-white-7x16 !optional;}
+}

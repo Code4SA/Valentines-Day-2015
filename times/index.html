@@ -2,185 +2,104 @@
 <html lang="en">
 <head>
     <link href="assets/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/tipsy.css">
     <link rel="stylesheet" href="assets/base.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- font for text -->
-    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
-    <!-- font for headers -->
-    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <meta charset="utf-8">
-    <title>Love horoscope: let the data speak</title>
-
 </head>
 <body>
-
-
   <div class="container">
 
-  <div class="col-md-5 title">
-    <h1>
-      LOVE LANDSCAPE
-    </h1>
-  </div>
-
-  <div class="col-md-4 title">
-    <h1>
-      <small>let the data speak </small><img src="assets/cupid-small.png">
-    </h1>
-
-  </div>
-
-  <div class="col-md-8 col-sm-10 col-xs-12">
-    <div class="maintext">
-
-      <strong>
-        What is the most likely age for you to find love (spoiler: love has no age!).
-        Ladies, look to the left, gents, to the right. Explore the 2014 marriage data and find out where you and your (current/future) partner sit on the marriage landscape.
-        Sadly, info on same-sex marriages wasn’t available.
-      </strong>
-      </div>
-  </div>
-
-    <div class="col-md-12"><div id="slopeChart"></div></div>
-
-  <div class="col-md-8 col-sm-10 col-xs-12">
-      <div class="maintext">
-        It’s the month of love, and we have no doubt that there’ll be a few rings in champagne glasses this Sunday. But how likely is it really?
-        While you’re busy counting roses and month anniversaries, we turned to the data for a more accurate view of who, or rather which ages, are most inclined to tie the knot.
-        The 2014 marriage data released this month by Statistics South Africa offers surprising insights on South African marriages.
-        For example, women are marrying younger…men, that is!
-        When we visualised the data, we found that women pensioners were less picky about age than men in the same age group.
-        While men over 70 tend to choose from the over 40 age range, we found that older women didn’t
-        mind dipping into the 17-25-year old pool.
-        So what does this mean? Maybe it’s time to adjust the ASL (Age, Sex, Location)
-        on your online dating profile.<br>
-        </div>
+    <h1>Love horoscope: let the data speak</h1>
+    <div class="col-md-12">
+      Looking for love? The answers lie in the data
+      Love has no age restriction and no matter how old you are, you can still find a partner.
+      This is clear based on the latest official data on civil marriages in South Africa, which was released by Statistics South Africa earlier this week.
+      <br/>
+      The data offers a fascinating insight into marriage in the RSA, including the ages of couples who tied the knot. And it was especially heartwarming to discover how Golden Oldies born in the first quarter of the 20th Century found love and got married in the 21st Century.
+      <br/>
+      We also know that on dating sites over-optimistic men - and sometimes women – often take a big fat chance and look for a match with someone much younger than themselves.
+      <br/>
+      So what are you chances of finding a match among people of different ages, based on the real data of people who got married in 2014?
+      <br/>
+      This interactive visualisation gives a quick view of civil marriages in SA in 2014. More importantly, it also lets you check the odds of you marrying a spouse of different ages based on real numbers, not the stars.
     </div>
 
-    <div class="col-md-2 col-sm-2 col-xs-2">
-      <a href="http://www.code4sa.org/" target="_blank"><img class="logo" src="http://code4sa.org/styles/images/code4sa_logo.png"/></a>
-    </div>
+
+    <div class="col-md-7"><div id="slopeChart"></div></div>
+    <div class="col-md-5">
+      How to play? Choose your gender (Female, left, male, right) and your own age range. So if you are a woman of 96 (yes some people that age do get married) hover the cursor over any category on the left and on the right  side you will see the age ranges in which you are most likely to find a marriage partner, based on actual weddings that took place in 2014.
+      <br/>
+      The figures in brackets are the number of marriages that took place in each age range in 2014 and the percentage they make up of the total marriages that year.    </div>
 
     <script type="text/javascript" src="libs/pym.js"></script>
-    <script src="libs/d3.v3.min.js"></script>
-    <script src="libs/slope_mod.js"></script>
-
-    <script src="libs//jquery-1.9.1.min.js"></script>
-    <script src="libs/tipsy.js"></script>
+    <script src="libs/d3.v3.js"></script>
+    <script src="libs/slope.js"></script>
 
     <script type="text/javascript">
-
-      var datacount = [150710, 150710];<!--total number: women,man-->
+      var datacount = [ 197, 107 ];<!--total number: women,man-->
 
       var data_ages=[
-        ['18-25','18-25',9133],
-        ['18-25','26-30',1920],
-        ['18-25','31-35',426],
-        ['18-25','36-40',102],
-        ['18-25','41-45',32],
-        ['18-25','46-50',10],
-        ['18-25','51-55',3],
-        ['26-30','18-25',13010],
-        ['26-30','26-30',16567],
-        ['26-30','31-35',2934],
-        ['26-30','36-40',580],
-        ['26-30','41-45',170],
-        ['26-30','46-50',32],
-        ['26-30','51-55',8],
-        ['26-30','56-60',3],
-        ['26-30','61-70',2],
-        ['31-35','18-25',5107],
-        ['31-35','26-30',15852],
-        ['31-35','31-35',10870],
-        ['31-35','36-40',2065],
-        ['31-35','41-45',438],
-        ['31-35','46-50',121],
-        ['31-35','51-55',24],
-        ['31-35','56-60',3],
-        ['31-35','61-70',5],
-        ['36-40','18-25',1516],
-        ['36-40','26-30',6077],
-        ['36-40','31-35',10208],
-        ['36-40','36-40',5928],
-        ['36-40','41-45',1276],
-        ['36-40','46-50',317],
-        ['36-40','51-55',67],
-        ['36-40','56-60',14],
-        ['36-40','61-70',9],
-        ['41-45','18-25',454],
-        ['41-45','26-30',1983],
-        ['41-45','31-35',4252],
-        ['41-45','36-40',5764],
-        ['41-45','41-45',3557],
-        ['41-45','46-50',840],
-        ['41-45','51-55',205],
-        ['41-45','56-60',55],
-        ['41-45','61-70',15],
-        ['41-45','70+',1],
-        ['46-50','18-25',166],
-        ['46-50','26-30',675],
-        ['46-50','31-35',1469],
-        ['46-50','36-40',2535],
-        ['46-50','41-45',3261],
-        ['46-50','46-50',2077],
-        ['46-50','51-55',528],
-        ['46-50','56-60',110],
-        ['46-50','61-70',34],
-        ['46-50','70+',3],
-        ['51-55','18-25',65],
-        ['51-55','26-30',246],
-        ['51-55','31-35',564],
-        ['51-55','36-40',1049],
-        ['51-55','41-45',1705],
-        ['51-55','46-50',2030],
-        ['51-55','51-55',1168],
-        ['51-55','56-60',287],
-        ['51-55','61-70',63],
-        ['51-55','70+',6],
-        ['56-60','18-25',33],
-        ['56-60','26-30',89],
-        ['56-60','31-35',220],
-        ['56-60','36-40',426],
-        ['56-60','41-45',736],
-        ['56-60','46-50',1115],
-        ['56-60','51-55',1288],
-        ['56-60','56-60',619],
-        ['56-60','61-70',207],
-        ['56-60','70+',12],
-        ['61-70','18-25',16],
-        ['61-70','26-30',61],
-        ['61-70','31-35',112],
-        ['61-70','36-40',237],
-        ['61-70','41-45',405],
-        ['61-70','46-50',695],
-        ['61-70','51-55',899],
-        ['61-70','56-60',984],
-        ['61-70','61-70',953],
-        ['61-70','70+',95],
-        ['70+','18-25',5],
-        ['70+','26-30',9],
-        ['70+','31-35',11],
-        ['70+','36-40',28],
-        ['70+','41-45',81],
-        ['70+','46-50',131],
-        ['70+','51-55',174],
-        ['70+','56-60',216],
-        ['70+','61-70',504],
-        ['70+','70+',353]
+        ['17-25','17-25',9133],
+        ['17-25','25-30',1920],
+        ['17-25','30-35',426],
+        ['17-25','35-40',102],
+        ['17-25','40-50',42],
+        ['17-25','50-60',3],
+        ['25-30','17-25',13010],
+        ['25-30','25-30',16567],
+        ['25-30','30-35',2934],
+        ['25-30','35-40',580],
+        ['25-30','40-50',202],
+        ['25-30','50-60',11],
+        ['25-30','60+',2],
+        ['30-35','17-25',5107],
+        ['30-35','25-30',15852],
+        ['30-35','30-35',10870],
+        ['30-35','35-40',2065],
+        ['30-35','40-50',559],
+        ['30-35','50-60',27],
+        ['30-35','60+',5],
+        ['35-40','17-25',1516],
+        ['35-40','25-30',6077],
+        ['35-40','30-35',10208],
+        ['35-40','35-40',5928],
+        ['35-40','40-50',1593],
+        ['35-40','50-60',81],
+        ['35-40','60+',9],
+        ['40-50','17-25',620],
+        ['40-50','25-30',2658],
+        ['40-50','30-35',5721],
+        ['40-50','35-40',8299],
+        ['40-50','40-50',9735],
+        ['40-50','50-60',898],
+        ['40-50','60+',53],
+        ['50-60','17-25',98],
+        ['50-60','25-30',335],
+        ['50-60','30-35',784],
+        ['50-60','35-40',1475],
+        ['50-60','40-50',5586],
+        ['50-60','50-60',3362],
+        ['50-60','60+',288],
+        ['60+','17-25',21],
+        ['60+','25-30',70],
+        ['60+','30-35',123],
+        ['60+','35-40',265],
+        ['60+','40-50',1312],
+        ['60+','50-60',2273],
+        ['60+','60+',1905]
       ];
 
-      var width = 510, height = 640, margin ={b:0, t:40, l:140, r:50};
+      var width = 500, height = 660, margin ={b:0, t:40, l:140, r:50};
 
       var svg = d3.select("#slopeChart")
-      .append("svg").attr('width', '100%').attr('height', (height + margin.b + margin.t))
+      .append("svg").attr('width', width).attr('height', (height + margin.b + margin.t))
       .append("g").attr("transform", "translate("+ margin.l + "," + margin.t + ")");
 
       var data = [
           {
               data: bP.partData(data_ages, 2, datacount),
               id: 'Region_X',
-              header: ["WOMEN", "MEN", "Mix and match"]
+              header: ["Women", "Man", "Who marries whom"]
           },
       ];
 
@@ -190,24 +109,6 @@
 
       var pymChild = new pym.Child({ renderCallback: drawGraphic });
     </script>
-
-  </div><!-- bootstrap container -->
-
-
-
-  <!-- Google Analytics -->
-  <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-48399585-31', 'auto');
-    ga('send', 'pageview');
-  </script>
-  <!-- End Google Analytics -->
-
-
-
+  </div>
 </body>
 </html>

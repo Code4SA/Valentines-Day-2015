@@ -8,9 +8,10 @@
 
         <script src="//d3js.org/d3.v3.min.js"></script>
         <script src="d3.slider.js"></script>
+        <script src="xkcd.js"></script>
     </head>
     <body>
-        <div id="container">
+        <div id="graph">
             <div id="slider-text">Use the slider to choose your age: <span id="text"></span></div>
             <div id="slider1"></div>
             <div>Choose your gender</div>
@@ -18,41 +19,11 @@
                 <button type="button" class="btn btn-default active" autofocus="true" id="male">Man</button>
                 <button type="button" class="btn btn-default" id="female">Woman</button>
             </div>
-            <div id="graph">
+            <div>
                 <svg id="area" />
             </div>
         </div>
         <div id="narrative"></div>
         <script src="area.js"></script>
-        <script>
-/*
-        function f1 (x) {
-            return Math.exp(-0.5 * (x - 1) * (x - 1)) * Math.sin(x + 0.2) + 0.05;
-        }
-
-        function f2 (x) {
-            return 0.5 * Math.cos(x - 0.5) + 0.1;
-        }
-
-        var xmin = -1.0, xmax = 7, N = 100,
-        data = d3.range(xmin, xmax, (xmax - xmin) / N).map(function (d) {
-            return {x: d, y: f1(d)};
-        }),
-        data2 = d3.range(xmin, xmax, (xmax - xmin) / N).map(function (d) {
-            return {x: d, y: f2(d)};
-        }),
-        parameters = {  title: "Examples",
-                        xlabel: "Yumminess",
-                        ylabel: "Velociraptor Speed",
-                        xlim: [xmin - (xmax - xmin) / 16, xmax + (xmax - xmin) / 16] },
-        plot = xkcdplot();
-        plot("#examples", parameters);
-        plot.plot(data);
-        plot.plot(data2, {stroke: "red"});
-        plot.draw();
-
-*/
-
-        </script>
     </body>
 </html>

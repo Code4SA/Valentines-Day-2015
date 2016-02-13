@@ -1,0 +1,22 @@
+{
+  "name": "c4sa.valentines",
+  "version": "0.1.0",
+  "description": "Valentines scorecard",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Code4SA/Valentines-Day-2016"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-copy": "^0.5.0",
+    "grunt-contrib-uglify": "~0.2.7",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-convert": "^0.1.12",
+    "grunt-grunticon": "2.1.0",
+    "grunt-sass": "^1.0.0",
+    "grunt-svgmin": "~0.3.1",
+    "grunt-text-replace": "^0.3.11",
+    "grunt-compile-handlebars": "^2.0.1"
+  }
+}

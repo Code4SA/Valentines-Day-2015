@@ -48,7 +48,7 @@ d3.csv("data.csv", function(data) {
     genderdata = new GenderData(data);
 
     var container = d3.select("svg#area")
-    var container_width = parseInt(d3.select("#container").style("width"))
+    var container_width = parseInt(d3.select("#graph").style("width"))
     var gender = "male";
     var age = 28;
     var transition_duration = 50;
@@ -138,7 +138,6 @@ d3.csv("data.csv", function(data) {
     d3.selectAll(".gender-buttons button").on("click", function() {
         d3.selectAll(".gender-buttons button").classed("active", false)
         d3.select(this).classed("active", true)
-        console.log(this)
         transition_duration = 1250;
         gender = this.id;
         var data = transition(age, gender);
@@ -152,23 +151,17 @@ d3.csv("data.csv", function(data) {
             return el.y
         }))
         var msg = d3.select("#narrative")
-        var gender_en = {
-            plural : gender == "male" ? "men" : "women",
-            singular : gender == "male" ? "man" : "woman",
-            other_plural : gender == "male" ? "women" : "men",
-            other_singular : gender == "male" ? "woman" : "man",
-        }
+        var gender = gender == "male" ? "women" : "men";
 
-        console.log(gender_en);
         var options = count < 100 ? "limited" : "endless";
         var str = "";
         if (age < 20 && count < 10) {
-            str = "We don't want to be judgemental but aren't you a little young to get married?";
+            str = "We don't want to be judgemental but ren't you a little young to get married?";
         } else {
-            str = String.format("As a {0} year old {1} your options are {2}.", age, gender_en.singular, options)
+            str = String.format("As a {0} year old {1} your options are {2}.", age, gender, options)
         }
 
-        str += String.format(" {0} {1} of your age married in 2014.", fmt(count), gender_en.plural);
+        str += String.format(" {0} {1} married in 2014.", fmt(count), gender);
         msg.text(str)
     }
 })
