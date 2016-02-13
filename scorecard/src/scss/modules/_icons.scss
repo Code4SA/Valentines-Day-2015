@@ -3,3 +3,24 @@
 	height:65px;
 	background-position:50% 50%;
 }
+
+.panel-woman, .panel-man {
+	.rangeslider__handle {
+		width:38px;
+		height:38px;
+		top:-9px;
+		&:after {
+			display:none;
+		}
+	}
+}
+.panel-woman {
+	.rangeslider__handle {
+		@extend .svg-profile-woman-38x38;
+	}
+}
+.panel-man {
+	.rangeslider__handle {
+		@extend .svg-profile-man-38x38;
+	}
+}
