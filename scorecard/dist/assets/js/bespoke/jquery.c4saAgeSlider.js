@@ -66,11 +66,7 @@ $.c4saAgeSlider = {
 			position = $this[0].position + 'px';
 		}
 		$output.css('left', position);
-		$.c4saAgeSlider.agePairingCalc($this);
-	},
-
-	agePairingCalc: function($this) {
-
+		$.c4saHandleAges.getAges();
 	}
 
 };
