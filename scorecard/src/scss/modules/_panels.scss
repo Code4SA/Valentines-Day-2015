@@ -21,6 +21,10 @@
 .panel {
 	@include panelStyle($dark-grey, #fff, $lightest-grey);
 	.panel-header .icon {@extend .svg-info-white-7x16 !optional;}
+	img {
+		@include img-responsive();
+		@include img-center();
+	}
 }
 .panel-man {
 	@include panelStyle($blue, $pseudo-black, $lightest-grey);
