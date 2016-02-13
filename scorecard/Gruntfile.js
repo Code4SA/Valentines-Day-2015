@@ -20,7 +20,7 @@ module.exports = function (grunt) {
 			},
 			csv2json: {
 				src: ['src/data/data.csv'],
-				dest: 'src/data/data.json'
+				dest: 'dist/assets/data/data.json'
 			}
 		},
 
