@@ -13,15 +13,15 @@
 
 <div class="page-frame">
 	<div class="layout">
+		<div class="icon-wedding-rings"></div>
+		<h2 class="headlin-tight center">Some header</h2>
+		<p class="sub-head center">Some intro Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 		<div class="panel panel-gender">
-			<div class="panel-header">
-				<h2>What is your gender and age?</h2>
-			</div>
 			<div class="panel-content">
 				<label>Are you a man or woman?</label>
 				<div class="binary-toggle">
-					<div class="btoggle"><input type="radio" name="you-gender" value="woman" id="you-gender-woman" class="jsGenderToggle"><label for="you-gender-woman" class="woman">Woman</label></div>
-					<div class="btoggle"><input type="radio" name="you-gender" value="man" id="you-gender-man" class="jsGenderToggle" checked="checked"><label for="you-gender-man" class="man">Man</label></div>
+					<div class="btoggle"><input type="radio" name="you-gender" value="woman" id="you-gender-woman" class="jsGenderToggle" checked="checked"><label for="you-gender-woman" class="woman">Woman</label></div>
+					<div class="btoggle"><input type="radio" name="you-gender" value="man" id="you-gender-man" class="jsGenderToggle"><label for="you-gender-man" class="man">Man</label></div>
 				</div>
 				<label for="jsYouAge">How old are you?</label>
 				<output name="jsYouAgeOut" id="jsYouAgeOut" class="tooltip-bubble" style="left:18%;">18</output>
@@ -29,9 +29,6 @@
 			</div>
 		</div>
 		<div class="panel panel-gender">
-			<div class="panel-header">
-				<h2>How old is your partner?</h2>
-			</div>
 			<div class="panel-content">
 				<div class="partner-superfluous">
 					<label>Is your partner a man or woman?</label>
@@ -40,15 +37,14 @@
 						<div class="btoggle"><input type="radio" name="partner-gender" value="man" id="partner-gender-man" class="jsGenderToggle"><label for="partner-gender-man" class="man">Man</label></div>
 					</div>
 				</div>
-				<label for="jsPartnerAge" class="partner-superfluous">How old is your partner?</label>
+				<label for="jsPartnerAge">How old is your partner?</label>
 				<output name="jsPartnerAgeOut" id="jsPartnerAgeOut" class="tooltip-bubble" style="left:18%;">18</output>
 				<input type="range" class="range-slider" min="0" max="100" step="1" value="18" name="jsPartnerAge" id="jsPartnerAge" data-output="#jsPartnerAgeOut" oninput="jsPartnerAgeOut.value = jsPartnerAge.value">
 			</div>
 		</div>
-		<div class="icon-wedding-rings"></div>
 		<div class="panel panel-data">
 			<div class="panel-header">
-				<h2>What the data tells us</h2>
+				<h2>How you match up</h2>
 			</div>
 			<div class="panel-content scorecard-cont">
 				<div id="jsScoreCard" class="scorecard hide">
@@ -57,25 +53,25 @@
 				</div>
 			</div>
 		</div>
+		<p class="small center">Source: StatsSA 2014 civil marriages. Note that the data does not include civil unions, same sex marriages or customary marriages.</p>
 	</div>
 </div>
 
 <link href="assets/css/images.css?nc=1" rel="stylesheet" type="text/css" property="stylesheet">
 
-<!--<script src="assets/js/polyfills/console.js"></script>-->
-<!--<script src="assets/js/lib/jquery.min.js"></script>-->
-<!--<script src="assets/js/polyfills/jquery.rangeslider.min.js"></script>-->
-<!--<script src="assets/js/modules/jquery.c4saHelpers.js"></script>-->
-<!--<script src="assets/js/modules/jquery.c4saForms.js"></script>-->
-<!--<script src="assets/js/modules/jquery.c4saloading.js"></script>-->
-<!--<script src="assets/js/bespoke/jquery.c4saHandleAges.js"></script>-->
-<!--<script src="assets/js/bespoke/jquery.c4saAgeSlider.js"></script>-->
-<!--<script src="assets/js/bespoke/jquery.c4saGenderStyling.js"></script>-->
-<!--<script src="assets/js/jquery.c4saValentines.js"></script>-->
+<script src="assets/js/polyfills/console.js"></script>
+<script src="assets/js/lib/jquery.min.js"></script>
+<script src="assets/js/polyfills/jquery.rangeslider.min.js"></script>
+<script src="assets/js/modules/jquery.c4saHelpers.js"></script>
+<script src="assets/js/modules/jquery.c4saForms.js"></script>
+<script src="assets/js/modules/jquery.c4saLoading.js"></script>
+<script src="assets/js/bespoke/jquery.c4saHandleAges.js"></script>
+<script src="assets/js/bespoke/jquery.c4saAgeSlider.js"></script>
+<script src="assets/js/bespoke/jquery.c4saGenderStyling.js"></script>
+<script src="assets/js/jquery.c4saValentines.js"></script>
 
 <!--Concatenated and uglified js-->
-<script src="assets/js/jquery.c4saValentines.min.js?nc=4"></script>
-<script src="assets/js/bespoke/jquery.c4saHandleAges.js"></script>
+<!--<script src="assets/js/jquery.c4saValentines.min.js?nc=4"></script>-->
 
 </body>
 </html>

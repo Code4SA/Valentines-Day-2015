@@ -24,19 +24,6 @@ module.exports = function (grunt) {
 			}
 		},
 
-		'compile-handlebars': {
-			allStatic: {
-				files: [{
-					src: 'src/handlebars/index.hbs',
-					dest: 'dist/index.html'
-				}],
-				templateData: 'src/data/data.json',
-				helpers: [
-					'src/handlebars/helpers/test.js'
-				]
-			}
-		},
-
 		svgmin: {
 			options: {
 				plugins: [
@@ -163,7 +150,6 @@ module.exports = function (grunt) {
 	});
 
 	grunt.loadNpmTasks('grunt-convert');
-	grunt.loadNpmTasks('grunt-compile-handlebars');
 	grunt.loadNpmTasks('grunt-contrib-clean');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-svgmin');
