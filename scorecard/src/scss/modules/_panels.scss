@@ -7,7 +7,7 @@
 	@include clear-fix();
 }
 .panel-header {
-	@include border-radius($default-radius $default-radius 0 0); background:$lightest-grey;
+	@include border-radius($default-radius $default-radius 0 0);
 }
 .panel-content {@include border-radius();}
 .panel-header + .panel-content {@include border-radius(0 0 $default-radius $default-radius);}
@@ -18,7 +18,7 @@
 	}
 	background:$contentBg;
 }
-.panel-data {
+.panel {
 	@include panelStyle($dark-grey, #fff, $lightest-grey);
 	.panel-header .icon {@extend .svg-info-white-7x16 !optional;}
 }
