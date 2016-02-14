@@ -116,6 +116,7 @@ module.exports = function (grunt) {
 						"dist/assets/js/bespoke/jquery.c4saHandleAges.js",
 						"dist/assets/js/bespoke/jquery.c4saAgeSlider.js",
 						"dist/assets/js/bespoke/jquery.c4saGenderStyling.js",
+                        "dist/assets/js/bespoke/jquery.c4saFastFacts.js",
 						"dist/assets/js/jquery.c4saValentines.js"
 					]
 				}
