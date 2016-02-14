@@ -80,11 +80,13 @@ $.c4saHandleAges = {
         var genderData = {
             you : {
                 gender : youGender,
+                gender_plural : (youGender == 'man') ? 'men' : 'women',
                 age : (youGender == 'man') ? manAge : womanAge,
                 wedding : (youGender == 'man') ? 'groom' : 'bride'
             },
             them : {
                 gender : (youGender == "man") ? 'woman' : 'man',
+                gender_plural : (youGender == 'man') ? 'women' : 'men',
                 age : (youGender == 'man') ? womanAge : manAge,
                 wedding : (youGender == 'man') ? 'bride' : 'groom'
             }
@@ -105,7 +107,16 @@ $.c4saHandleAges = {
             throw 'Value: ' + val + ' does not fit within range';
         }
 
+        var getRangeLabel = function(val) {
+            for (idx in ageRanges) {
+                if (val < ageRanges[idx])
+                    return ageRanges[idx] - rangeWidth + ' - ' + (ageRanges[idx] - 1);
+            }
+            throw 'Value: ' + val + ' does not fit within range';
+        }
+
         var total = 0, minAge = Infinity, maxAge = -Infinity;
+        var numAge = 0;
         for (el in data) {
             var m = data[el];
             var count = parseInt(m['count']);
@@ -117,33 +128,48 @@ $.c4saHandleAges = {
                 total += count;
                 idx = getRangeIndex(them.weddingAge);
                 marriageAges[idx] += count;
+
+                if (them.age == them.weddingAge)
+                    numAge += count;
             }
         }
-        var ratings = [0, 0.20, 0.3, 0.40];
         var themRange = getRangeIndex(them.age);
         var numInRange = marriageAges[themRange];
         var perc = numInRange / total;
-        var textAges = String.format('Did you know that in that year, a {0} year-old {3} married a {1} year-old {4}, another {0} year-old {3} married a {2} year-old {4}', you.age, minAge, maxAge, you.gender, them.gender) 
+        var mean = 1 / 3;
+        var ratio = perc / mean;
+        var range = getRangeLabel(them.age);
+        console.log("numInRange: " + numInRange);
+        console.log(total);
+        console.log("Perc: " + perc);
+        console.log("mean: " + mean);
+
+        var facts = $.c4saFastFacts;
+        var textFacts = '<p><strong>Fast facts:</strong> ' + facts[Math.round(Math.random() * facts.length)] + '</p>';
+        var textAges = String.format('Did you know that in that year, a {0} year-old {3} married a {1} year-old {4}, another {0} year-old {3} married a {2} year-old {4}', you.age, minAge, maxAge, you.gender, them.gender);
+        var textContext = String.format('Of the {0} {1} year-old {2} who married in 2014, {3} of them married in the {4} range.', total, you.age, you.gender_plural, numInRange, range);
+
         if (isNaN(perc)) perc = 0;
 
         var ratingsText = {
             0 : 'There were no couples of your ages who married in 2014. Even if this isn\'t illegal you might want to re-consider your choices.',
-            1 : String.format('Only {0} couples of your ages married in 2014. It might work if you are a special couple but it is very unusual.', numInRange) + ' ' + textAges,
-            2 : String.format('Long Shot: Only {0} couples of your ages married in 2014. Not the best odds, but you’re in with a fighting chance. ', numInRange) + ' ' + textAges,
-            3 : 'Safe bet!: Definite long-term potential.' + ' ' + textAges,
-            4 : 'Superb!: This match has the strongest love connection.' + ' ' + textAges
+            1 : textContext + ' ' + 'Your relationship might work if you are a special couple but it is very unusual.' +  ' ' + textAges,
+            2 : 'Not a very common pairing but not rare.' + ' ' + textContext + ' ' + 'Not the best odds, but you’re in with a fighting chance. ',
+            3 : String.format('Great match!: Definitely long-term potential.', you.age, you.gender_plural, them.gender_plural) + ' ' + textContext + ' ' + textAges,
         }
 
-        var rating = 3;
-        for (idx in ratings) {
-            if (perc <= ratings[idx]) {
-                rating = parseInt(idx);
-                break;
-            }
-        }
-        var text = ratingsText[rating];
-        rating -= 1;
-        if (rating < 0) rating = 0;
+        if (ratio > 1.1)
+            rating = 3
+        else if (ratio > 0.6)
+            rating = 2;
+        else if (ratio > 0)
+            rating = 1;
+        else
+            rating = 0;
+        console.log("Ratio:" + ratio);
+        console.log("Rating: " + rating);
+
+        var text = ratingsText[rating] + ' ' + textFacts;
 
 		$.c4saHandleAges.updateScore(rating + 1, text);
 	},
@@ -151,7 +177,7 @@ $.c4saHandleAges = {
 	updateScore: function(score, text) {
 		$.c4saHandleAges.scoreLoading(false);
 		$('#jsScoreCardImg').attr('src', $.c4saHandleAges.imageUrl + score + $.c4saHandleAges.imageExtension);
-		$('#jsScoreCardText').text(text);
+		$('#jsScoreCardText').html(text);
 	}
 
 };
