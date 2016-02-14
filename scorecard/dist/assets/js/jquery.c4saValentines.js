@@ -9,5 +9,4 @@ $.c4saValentines = {
 $(document).ready(function () {
 	$.c4saValentines.init();
 	$('html').addClass('js-ready');
-    new pym.Child();
 });
