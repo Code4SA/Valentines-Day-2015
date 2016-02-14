@@ -111,7 +111,7 @@ $.c4saHandleAges = {
             var count = parseInt(m['count']);
             you.weddingAge = parseInt(m[you.wedding]);
             them.weddingAge = parseInt(m[them.wedding]);
-            if (you.weddingAge == manAge) {
+            if (you.weddingAge == you.age) {
                 minAge = them.weddingAge < minAge ? them.weddingAge : minAge;
                 maxAge = them.weddingAge > maxAge ? them.weddingAge : maxAge;
                 total += count;
