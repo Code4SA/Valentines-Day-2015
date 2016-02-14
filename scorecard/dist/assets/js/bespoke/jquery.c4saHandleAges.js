@@ -94,7 +94,7 @@ $.c4saHandleAges = {
         var you = genderData.you;
         var them = genderData.them;
 
-        var ageRanges = [], firstBound = 18, lastBound = 100, rangeWidth = 5;
+        var ageRanges = [], firstBound = 18, lastBound = 104, rangeWidth = 5;
         for (i = firstBound; i <= lastBound; i += rangeWidth)
             ageRanges.push(i);
 
