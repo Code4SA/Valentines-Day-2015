@@ -139,10 +139,6 @@ $.c4saHandleAges = {
         var mean = 1 / 3;
         var ratio = perc / mean;
         var range = getRangeLabel(them.age);
-        console.log("numInRange: " + numInRange);
-        console.log(total);
-        console.log("Perc: " + perc);
-        console.log("mean: " + mean);
 
         var facts = $.c4saFastFacts;
         var textFacts = '<p><strong>Fast facts:</strong> ' + facts[Math.round(Math.random() * facts.length)] + '</p>';
@@ -166,8 +162,6 @@ $.c4saHandleAges = {
             rating = 1;
         else
             rating = 0;
-        console.log("Ratio:" + ratio);
-        console.log("Rating: " + rating);
 
         var text = ratingsText[rating] + ' ' + textFacts;
 
