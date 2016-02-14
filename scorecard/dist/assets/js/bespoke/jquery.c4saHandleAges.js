@@ -141,7 +141,7 @@ $.c4saHandleAges = {
         var range = getRangeLabel(them.age);
 
         var facts = $.c4saFastFacts;
-        var textFacts = '<p><strong>Fast facts:</strong> ' + facts[Math.round(Math.random() * facts.length)] + '</p>';
+        var textFacts = '<p><strong>Fast facts:</strong> ' + facts[Math.round(Math.random() * (facts.length - 1))] + '</p>';
         var textAges = String.format('Did you know that in that year, a {0} year-old {3} married a {1} year-old {4}, another {0} year-old {3} married a {2} year-old {4}', you.age, minAge, maxAge, you.gender, them.gender);
         var textContext = String.format('Of the {0} {1} year-old {2} who married in 2014, {3} of them married in the {4} range.', total.toLocaleString(), you.age, you.gender_plural, numInRange.toLocaleString(), range);
 

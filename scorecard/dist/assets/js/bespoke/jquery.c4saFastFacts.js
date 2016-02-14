@@ -19,5 +19,5 @@ $.c4saFastFacts = [
     'In South Africa your wedding needs to take place in a church or other building with ‘open doors’, private office or home.',
     'The Reed Dance Festival takes place every year in KwaZulu-Natal, where Zulu virgins are brought before the polygamist Zulu king and he chooses his next bride.',
     'Tying the knot is a typical African custom that takes place alongside the exchanging of rings and the lifting of the veil. The wedding couple have their hands tied together by grass or cloth to symbolise the joining together.',
-    'The 12 symbols are present at a traditional African Wedding as a sign of what to expect in the coming years of marriage. They are salt, pepper, water, wheat, bitter herbs, wine, holy book, honey, a broom, spoon, pot, spear and a shield.',
+    'The 12 symbols are present at a traditional African Wedding as a sign of what to expect in the coming years of marriage. They are salt, pepper, water, wheat, bitter herbs, wine, holy book, honey, a broom, spoon, pot, spear and a shield.'
 ]
