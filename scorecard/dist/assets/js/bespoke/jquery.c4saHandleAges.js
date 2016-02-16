@@ -109,8 +109,10 @@ $.c4saHandleAges = {
 
         var getRangeLabel = function(val) {
             for (idx in ageRanges) {
-                if (val < ageRanges[idx])
+                if (val < ageRanges[idx]) {
+                    if (idx == 0) return "0 - 17"
                     return ageRanges[idx] - rangeWidth + ' - ' + (ageRanges[idx] - 1);
+                }
             }
             throw 'Value: ' + val + ' does not fit within range';
         }
@@ -134,6 +136,7 @@ $.c4saHandleAges = {
             }
         }
         var themRange = getRangeIndex(them.age);
+        console.log(them.age + " " + themRange);
         var numInRange = marriageAges[themRange];
         var perc = numInRange / total;
         var mean = 1 / 3;
@@ -143,27 +146,32 @@ $.c4saHandleAges = {
         var facts = $.c4saFastFacts;
         var textFacts = '<p><strong>Fast facts:</strong> ' + facts[Math.round(Math.random() * (facts.length - 1))] + '</p>';
         var textAges = String.format('Did you know that in that year, a {0} your age married a {1} year-old {4} and another married a {2} year-old {4}', you.gender, minAge, maxAge, you.gender, them.gender);
-        var textContext = String.format('Of the {0} {1} year-old {2} who married in 2014, {3} of them married in the {4} range.', total.toLocaleString(), you.age, you.gender_plural, numInRange.toLocaleString(), range);
+        var textContext = String.format('Of the <strong>{0}</strong> {1} year-old {2} who married in 2014, <strong>{3}</strong> of them married in the {4} range.', total.toLocaleString(), you.age, you.gender_plural, numInRange.toLocaleString(), range);
 
         if (isNaN(perc)) perc = 0;
 
-        var ratingsText = {
-            0 : 'There were no couples of your ages who married in 2014. Even if this isn\'t illegal you might want to re-consider your choices.',
-            1 : textContext + ' ' + 'Your relationship might work if you are a special couple but it is very unusual.' +  ' ' + textAges,
-            2 : 'Not a very common pairing but not rare.' + ' ' + textContext + ' ' + 'Not the best odds, but you’re in with a fighting chance. ',
-            3 : String.format('Great match!: Definitely long-term potential.', you.age, you.gender_plural, them.gender_plural) + ' ' + textContext + ' ' + textAges,
-        }
-
-        if (ratio > 1.1)
+        var text;
+        if (ratio > 1.1) {
             rating = 3
-        else if (ratio > 0.6)
+            text = String.format('Great match!: Definitely long-term potential.', you.age, you.gender_plural, them.gender_plural) + ' ' + textContext + ' ' + textAges + ' ' + textFacts;
+        }
+        else if (ratio > 0.6) {
+            text = 'Not a very common pairing but not rare.' + ' ' + textContext + ' ' + 'Not the best odds, but you’re in with a fighting chance.' + ' ' + textFacts;
             rating = 2;
-        else if (ratio > 0)
+        }
+        else if (ratio > 0) {
             rating = 1;
-        else
+            text = textContext + ' ' + 'Your relationship might work if you are a special couple but it is very unusual.' +  ' ' + textAges + ' ' + textFacts;
+        }
+        else {
             rating = 0;
+            text = 'There were no couples of your ages who married in 2014.';
+            if (manAge < 18 || womanAge < 18) {
+                text = text + ' This is possibly illegal. Even if this isn\'t illegal you might want to re-consider your choices.'
+            }
+            text += ' ' + textFacts;
 
-        var text = ratingsText[rating] + ' ' + textFacts;
+        }
 
 		$.c4saHandleAges.updateScore(rating + 1, text);
 	},
